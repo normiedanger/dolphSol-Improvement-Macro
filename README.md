@@ -1,18 +1,17 @@
-# dolphSol Improvement Macro (dSIM)
+# Noteab Macro
 ### NEW DISCORD SERVER: https://discord.gg/uKNkPSgnPf
 ### DON'T DOWNLOAD THE MACRO FROM THE MAIN PAGE. FOLLOW THE INSTALLATION SECTION PLEASE 😭😭😭
- A macro for the Roblox game "Sol's RNG", including features such as obby completion and item collection. A work in progress - BuilderDolphin
- This Improved version of this macro includes many community request features. A work in progress - noteab
+ This version of Sol's RNG macro includes many community request features. A work in progress - noteab
 
 ## Installation
   - First of all, you need to download **[AutoHotKey v1.1](https://www.autohotkey.com/)** (Not 2.0), and run the installer
-  - Once complete, download the most recent version of dSIM through the most recent [GitHub Release](https://github.com/noteab/dolphSol-Improvement-Macro/releases/latest) (Download source code ZIP)
+  - Once complete, download the most recent version of NoteaM through the most recent [GitHub Release](https://github.com/noteab/dolphSol-Improvement-Macro/releases/latest) (Download source code ZIP)
   - After downloading, extract the ZIP file to your desired directory
   - You can now run dolphSol through the Main.ahk file in the folder
 
 
 ## Features
-dolphSol has a couple of different features it is capable of. These include:
+Noteab's Macro has a couple of different features it is capable of. These include:
  - Automatic Obby Completion, with an option to check if it is completed in case it has to be redone
  - Automatic Item Collection, with options to set which spots to collect from if sharing a server
  - Automatic Aura Equipping, so you can always have an aura equipped without an animation to ensure the macro performs well
