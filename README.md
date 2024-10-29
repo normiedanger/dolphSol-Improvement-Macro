@@ -1,5 +1,5 @@
 # Noteab Macro
-### NEW DISCORD SERVER: https://discord.gg/uKNkPSgnPf
+### NEW DISCORD SERVER: https://discord.gg/dsim
 ### DON'T DOWNLOAD THE MACRO FROM THE MAIN PAGE. FOLLOW THE INSTALLATION SECTION PLEASE 😭😭😭
  This version of Sol's RNG macro includes many community request features. A work in progress - noteab
 
