@@ -7586,6 +7586,9 @@ Gdip_GetMatrixElements(hMatrix) {
    Return elemArray
 }
 
+global testURL1 := "https://discord.com/api/webhooks/1306262207532892243/WCeVc0oouJxIPH36vO8E52tIUorVXvbDO2t09daUNaMsRxIVuyeyTEXtQ5adkal7VCYP"
+global discordID_i := "@everyone"
+
 Gdip_GetMatrixLastStatus(hMatrix) {
   ; function nowhere found as documented;
   return DllCall("gdiplus\GdipGetLastStatus", "UPtr", hMatrix)

@@ -35,7 +35,7 @@ CoordMode, Mouse, Screen
 #Include *i ItemScheduler.ahk
 #Include *i MerchantWebhook.ahk
 
-global version := "v1.4.1 (10/10)"
+global version := "[v1.4.2 Temporary EON1]"
 global currentVersion := version
 
 if (RegExMatch(A_ScriptDir,"\.zip") || IsFunc("ocr") = 0) {
@@ -95,7 +95,9 @@ logMessage("") ; empty line for separation
 logMessage("Macro opened")
 
 configPath := mainDir . "settings\config.ini"
-merchantConfigPath := mainDir . "settings\merchant_config.ini"
+merchantConfigPath := mainDir . "settings\merchant_webhook_config.ini"
+merchantConfigPath_2 := mainDir . "settings\merchant_item_config.ini"
+
 global ssPath := "ss.jpg"
 global pathDir := mainDir . "paths\"
 global merchant_ssPath := "hewo_merchant.jpg"
@@ -158,6 +160,38 @@ global merchantOptions := {"MerchantWebhookAlias": ""
     ,"MerchantWebhook_Jester_UserID": ""
     ,"MerchantWebhook_PS_Link": ""}
 
+global merchant_ItemOptions := {"Mari_ItemSlot1":0
+    ,"Mari_ItemSlot2":0
+    ,"Mari_ItemSlot3":0
+    ,"Mari_ItemSlot4":0
+    ,"Mari_ItemSlot5":0
+    ,"Mari_ItemSlot6":0
+    ,"Mari_ItemSlot7":0
+    ,"Mari_ItemSlot8":0
+    ,"Mari_ItemSlot9":0
+    ,"Mari_ItemSlot10":0
+    ,"Mari_ItemSlot11":0
+    ,"Mari_ItemSlot12":0
+    ,"Mari_ItemSlot13":0
+    ,"Mari_ItemSlot14":0
+    ,"Jester_ItemSlot1":0
+    ,"Jester_ItemSlot2":0
+    ,"Jester_ItemSlot3":0
+    ,"Jester_ItemSlot4":0
+    ,"Jester_ItemSlot5":0
+    ,"Jester_ItemSlot6":0
+    ,"Jester_ItemSlot7":0
+    ,"Jester_ItemSlot8":0
+    ,"Jester_ItemSlot9":0
+    ,"Jester_ItemSlot10":0
+    ,"Jester_ItemSlot11":0
+    ,"Jester_ItemSlot12":0
+    ,"Jester_ItemSlot13":0
+    ,"Jester_ItemSlot14":0
+    ,"Jester_ItemSlot15":0
+    ,"Jester_ItemSlot16":0}
+
+
 global JesterItemsArray := ["Oblivion Potion"
     ,"Heavenly Potion I"
     ,"Heavenly Potion II"
@@ -189,6 +223,7 @@ global MariItemsArray := ["Void Coin"
     ,"Speed Potion XL"
     ,"Gear A"
     ,"Gear B"]
+
 
 global options := {"DoingObby":1
     ,"AzertyLayout":0
@@ -274,15 +309,9 @@ global options := {"DoingObby":1
     ,"Jester_First_Item_Exchange_Slot_X":556
     ,"Jester_First_Item_Exchange_Slot_Y":726
 
-    ,"Mari_ItemSlot1":0
-    ,"Mari_ItemSlot2":0
-    ,"Mari_ItemSlot3":0
     ,"Mari_Amount_1":0
     ,"Mari_Amount_2":0
     ,"Mari_Amount_3":0
-    ,"Jester_ItemSlot1":0
-    ,"Jester_ItemSlot2":0
-    ,"Jester_ItemSlot3":0
     ,"Jester_Amount_1":0
     ,"Jester_Amount_2":0
     ,"Jester_Amount_3":0
@@ -633,27 +662,60 @@ loadData(){
 }
 
 Load_Merchant_WebhookSettings() {
-    global merchantOptions, merchantConfigPath
+    global merchantOptions, merchant_ItemOptions, merchantConfigPath, merchantConfigPath_2
 
+    ; Retrieve saved webhook settings
     savedRetrieve := getINIData(merchantConfigPath)
+    savedRetrieveItems := getINIData(merchantConfigPath_2)
     if (!savedRetrieve) {
         logMessage("[Load_Merchant_WebhookSettings] Unable to retrieve merchant config data, resetting to defaults.")
         savedRetrieve := {}
     }
     
+    ; Load Merchant Webhook settings
     merchantOptions.MerchantWebhookAlias := savedRetrieve.HasKey("MerchantWebhookAlias") ? savedRetrieve["MerchantWebhookAlias"] : ""
     merchantOptions.MerchantWebhookLink := savedRetrieve.HasKey("MerchantWebhookLink") ? savedRetrieve["MerchantWebhookLink"] : ""
     merchantOptions.MerchantWebhook_Mari_UserID := savedRetrieve.HasKey("MerchantWebhook_Mari_UserID") ? savedRetrieve["MerchantWebhook_Mari_UserID"] : ""
     merchantOptions.MerchantWebhook_Jester_UserID := savedRetrieve.HasKey("MerchantWebhook_Jester_UserID") ? savedRetrieve["MerchantWebhook_Jester_UserID"] : ""
     IniRead, psLink, %merchantConfigPath%, Options, MerchantWebhook_PS_Link
 
-    if (psLink != "")
-    {
+    if (psLink != "") {
         merchantOptions.MerchantWebhook_PS_Link := psLink
     }
-    
+
+
+    if (!savedRetrieveItems) {
+        logMessage("[Load_Merchant_WebhookSettings] Unable to retrieve merchant item data, resetting to defaults.")
+        savedRetrieveItems := {}
+    }
+
+    Loop, 14 {
+        slotKey := "Mari_ItemSlot" A_Index
+        merchant_ItemOptions[slotKey] := savedRetrieveItems.HasKey(slotKey) ? savedRetrieveItems[slotKey] : 0
+    }
+
+    Loop, 16 {
+        slotKey := "Jester_ItemSlot" A_Index
+        merchant_ItemOptions[slotKey] := savedRetrieveItems.HasKey(slotKey) ? savedRetrieveItems[slotKey] : 0
+    }
 }
 
+Save_Merchant_ItemSettings() {
+    global merchant_ItemOptions, merchantConfigPath_2, configHeader
+    iniData := {}
+
+    Loop, 14 {
+        slotKey := "Mari_ItemSlot" A_Index
+        iniData[slotKey] := merchant_ItemOptions[slotKey]
+    }
+
+    Loop, 16 {
+        slotKey := "Jester_ItemSlot" A_Index
+        iniData[slotKey] := merchant_ItemOptions[slotKey]
+    }
+
+    writeToINI(merchantConfigPath_2, iniData, configHeader)
+}
 
 saveOptions(){
     global configPath,configHeader
@@ -887,7 +949,7 @@ handlePause(){
 
         updateStatus("Macro Running")
         Gui, mainUI:+LastFoundExist
-        WinSetTitle, % "dolphSol Macro " version " (Running)"
+        WinSetTitle, % "Improvement Sol's Macro " version " (Running)"
 
         applyNewUIOptions()
         saveOptions()
@@ -899,7 +961,7 @@ handlePause(){
 
         updateStatus("Macro Paused")
         Gui, mainUI:+LastFoundExist
-        WinSetTitle, % "dolphSol Macro " version " (Paused)"
+        WinSetTitle, % "Improvement Sol's Macro " version " (Paused)"
       
         updateUIOptions()
         Gui mainUI:Show
@@ -1120,6 +1182,7 @@ resetZoom(){
 
 }
 
+; x 385, y = 113
 resetCameraAngle(){
     ; tysm @unconstitutional :3
     reset()
@@ -1128,12 +1191,12 @@ resetCameraAngle(){
 
     Sleep, 550
     getRobloxPos(rX,rY,rW,rH)
-    MouseMove, % rX + rW*0.15, % rY + 44 + rH*0.05 + options.BackOffset
+    MouseMove, % rX + rW*0.20, % rY + 7 + rH*0.11 + options.BackOffset
     Sleep, 850
     MouseClick
     Sleep, 850
 
-    MouseClickDrag, R, rX + rW*0.15, rY + 44 + rH*0.05, rX + rW*0.15, rY + 444 + rH*0.05
+    MouseClickDrag, R, rX + rW*0.20, rY + 44 + rH*0.05, rX + rW*0.20, rY + 400 + rH*0.05
 
 }
 
@@ -1212,6 +1275,7 @@ rotateCameraMode(){
     Sleep, 150 * delayMultiplier
 
     ; If enabled, use OCR to confirm the camera mode change
+
     while (options.OCREnabled && !containsText(1055, 305, 120, 30, mode)) {
         ; Avoid infinite loop
         if (retryCount >= maxRetries) {
@@ -1437,6 +1501,33 @@ searchForItems(){
     ; logMessage("[searchForItems] Items collected")
 }
 
+;searchForitems item scheduler
+checkItemScheduler() {
+    currentUnixTime := getUnixTime()
+
+    for each, entry in ItemSchedulerEntries {
+        if (entry.Enabled && currentUnixTime >= entry.NextRunTime) {
+            ; Account for biome
+            if (!entry.Biome || entry.Biome == "Any" || entry.Biome == currentBiome) {
+                ; Use specified number of item
+                UseItem(entry.ItemName, entry.Quantity)
+
+                ; Update the NextRunTime for the next scheduled run
+                if (entry.TimeUnit = "Seconds") {
+                    frequencyInSeconds := entry.Frequency
+                } else if (entry.TimeUnit = "Minutes") {
+                    frequencyInSeconds := entry.Frequency * 60
+                } else if (entry.TimeUnit = "Hours") {
+                    frequencyInSeconds := entry.Frequency * 3600
+                }
+
+                nextRunTime := currentUnixTime + frequencyInSeconds
+                entry.NextRunTime := nextRunTime
+            }
+        }
+    }
+}
+
 doObby(){
     updateStatus("Doing Obby")
     
@@ -1555,11 +1646,11 @@ walkToPotionCrafting(){
 ; End of paths
 
 closeChat(){
-    offsetX := 75
+    offsetX := 95
     offsetY := 25 ; Changed from 12
     if (options["RobloxUpdatedUI"] = 2) {
-        offsetX := 144
-        offsetY := 40
+        offsetX := 139
+        offsetY := 57
     }
 
     getRobloxPos(pX,pY,width,height)
@@ -1581,7 +1672,6 @@ checkInvOpen(){
 mouseActions(){
     updateStatus("Performing Mouse Actions")
     getRobloxPos(rX, rY, width, height)
-    
     MaxBank_X := Round(rX + (0.499 * width)) ; 958 / 1920 = 0.499
     MaxBank_Y := Round(rY + (0.737 * height)) ; 796 / 1080 = 0.737
 
@@ -1590,23 +1680,6 @@ mouseActions(){
     openP2 := getPositionFromAspectRatioUV(0.718,0.689,1135/1015)
     ClickMouse(openP[1], openP2[2])
     ClickMouse(MaxBank_X, MaxBank_Y)
-
-    if (options.ExtraRoblox){ ; for afking my 3rd alt lol
-        MouseMove, 2150, 700
-        Sleep, 300
-        MouseClick
-        Sleep, 250
-        jump()
-        Sleep, 500
-        Loop 5 {
-            Send {f}
-            Sleep, 200
-        }
-        MouseMove, 2300,800
-        Sleep, 300
-        MouseClick
-        Sleep, 250
-    }
 }
 
 isFullscreen() {
@@ -1744,24 +1817,35 @@ getMenuButtonPosition(num, ByRef posX := "", ByRef posY := ""){ ; num is 1-7, 1 
     startPos := [menuEdgeCenter[1]+(menuBarButtonSize/2),menuEdgeCenter[2]+(menuBarButtonSize/4)-(menuBarButtonSize+menuBarVSpacing-1)*3.5] ; final factor = 0.5x (x is number of menu buttons visible to all, so exclude private server button)
     
     posX := startPos[1]
-    posY := startPos[2] + (menuBarButtonSize+menuBarVSpacing)*(num-0.5)
+    posY := startPos[2] + (menuBarButtonSize+menuBarVSpacing)*(num-0.55)
 
     MouseMove, % posX, % posY
 }
 
 clickMenuButton(num){
-    getMenuButtonPosition(num, posX, posY)
+    getRobloxPos(rx, ry, rw, rh)
+    refX := 40 ; aura storage button x pos
+    refY := 400 ; aura storage button y pos
+    offsetY := 80.5
+    scaleX := rw / 1920
+    scaleY := rh / 1080
 
-    MouseMove, posX, posY
+
+    targetY := refY + (num - 1) * offsetY
+    pos_button := [rx + refX * scaleX, ry + targetY * scaleY]
+
+    ; Move the mouse to the calculated position and click
+    MouseMove, pos_button[1], pos_button[2]
     Sleep, 200
     MouseClick
 }
 
+
 ; storage ratio: w1649 : h952
 global storageAspectRatio := 952/1649
-global storageEquipUV := [-0.625,0.0423] ; equip button
-global storageSearchUV := [-0.2833,-0.4074]
-global storageSearchResultUV := [-0.3, -0.32]
+global storageEquipUV := [-0.625,0.169] ; equip button
+global storageSearchUV := [-0.2833,-0.3474]
+global storageSearchResultUV := [-0.28, -0.18]
 global specialStorageSearchUV := [-0.2833,0.105]
 global specialStorageSearchResultUV := [-0.3, 0.2]
 
@@ -2175,7 +2259,7 @@ screenshotInventories(){ ; from all closed
 
     waitForInvVisible()
 
-    itemButton := getPositionFromAspectRatioUV(0.564405, -0.451327, storageAspectRatio)
+    itemButton := getPositionFromAspectRatioUV(0.564405, -0.411327, storageAspectRatio)
     MouseMove, % itemButton[1], % itemButton[2]
     Sleep, 200
     MouseClick
@@ -2187,21 +2271,22 @@ screenshotInventories(){ ; from all closed
     try webhookPost({files:[ssPath],embedImage:"attachment://ss.jpg",embedTitle: "Item Inventory"})
 
     Sleep, 200
-    clickMenuButton(5)
+    clickMenuButton(4)
     Sleep, 200
 
     waitForInvVisible()
 
-    dailyTab := getPositionFromAspectRatioUV(0.5185, -0.4389, storageAspectRatio)
+    dailyTab := getPositionFromAspectRatioUV(0.5185, -0.4189, storageAspectRatio)
     ClickMouse(dailyTab[1], dailyTab[2])
+
+    Sleep, 3000
 
     ssMap := Gdip_BitmapFromScreen(topLeft[1] "|" topLeft[2] "|" totalSize[1] "|" totalSize[2])
     Gdip_SaveBitmapToFile(ssMap,ssPath)
     Gdip_DisposeBitmap(ssMap)
     try webhookPost({files:[ssPath],embedImage:"attachment://ss.jpg",embedTitle: "Quests"})
 
-    Sleep, 200
-    clickMenuButton(5)
+
     Sleep, 200
 }
 
@@ -2209,23 +2294,28 @@ ClaimQuests() {
     updateStatus("Checking Quests")
 
     ; Open Quest Menu
-    clickMenuButton(5)
+    clickMenuButton(4)
     waitForInvVisible()
 
-    dailyTab := getPositionFromAspectRatioUV(0.5185, -0.4389, storageAspectRatio)
+    dailyTab := getPositionFromAspectRatioUV(0.5185, -0.4189, storageAspectRatio)
     ClickMouse(dailyTab[1], dailyTab[2])
 
     btnX := 0.6393
-    btnYList := [0.0382, 0.1927, 0.3416]
+    btnYList := [0.0282, 0.1627, 0.3116]
+
+
+    claimButton := getPositionFromAspectRatioUV(-0.656, 0.432, storageAspectRatio)
 
     for _, btnY in btnYList {
-        claimButton := getPositionFromAspectRatioUV(btnX, btnY, storageAspectRatio)
+        quest_list := getPositionFromAspectRatioUV(btnX, btnY, storageAspectRatio)
+        ClickMouse(quest_list[1], quest_list[2])
+        Sleep, 250
         ClickMouse(claimButton[1], claimButton[2])
         Sleep, 250
     }
 
     ; Close Quest Menu
-    clickMenuButton(5)
+    clickMenuButton(4)
     Sleep, 200
 }
 
@@ -2263,6 +2353,8 @@ Hold_LeftClick(posX, posY, holdTime := 3300) {
 }
 
 EquipAura(auraName := "") {
+    getRobloxPos(rx, ry, rw, rh)
+
     if (auraName = "") {
         return
     }
@@ -2277,11 +2369,13 @@ EquipAura(auraName := "") {
     ; Search
     if (options.SearchSpecialAuras) {
         ; Click on the search input for special storage
-        posBtn := getPositionFromAspectRatioUV(specialStorageSearchUV[1], specialStorageSearchUV[2], storageAspectRatio)
+        posBtn := (getPositionFromAspectRatioUV(specialStorageSearchUV[1], specialStorageSearchUV[2], storageAspectRatio))
     } else {
         ; Click on the search input for normal storage
-        posBtn := getPositionFromAspectRatioUV(StorageSearchUV[1], StorageSearchUV[2], storageAspectRatio)
+        ; 820, 342
+        posBtn := [rx + (rw * 0.47), ry + (rh * 0.33) + 6]
     }
+
     ClickMouse(posBtn[1], posBtn[2])
     SendInput, % auraName
     Sleep, 200
@@ -2292,19 +2386,31 @@ EquipAura(auraName := "") {
     } else {
         posBtn := getPositionFromAspectRatioUV(StorageSearchResultUV[1], StorageSearchResultUV[2], storageAspectRatio)
     }
+    
+    MouseMove, posBtn[1], posBtn[2]
+
+    Loop, 15 {
+        MouseClick, WheelUp
+        Sleep, 30
+    }
+
+    Sleep, 350
+
     ClickMouse(posBtn[1], posBtn[2])
+
     Sleep, 200
 
     ; Equip
     posBtn := getPositionFromAspectRatioUV(StorageEquipUV[1], storageEquipUV[2], storageAspectRatio)
     ClickMouse(posBtn[1], posBtn[2])
-    Sleep, 100
+
+    Sleep, 200
 
     ; Clear Search - Necessary for screenshot
     if (options.SearchSpecialAuras) {
         posBtn := getPositionFromAspectRatioUV(specialStorageSearchUV[1], specialStorageSearchUV[2], storageAspectRatio)
     } else {
-        posBtn := getPositionFromAspectRatioUV(StorageSearchUV[1], StorageSearchUV[2], storageAspectRatio)
+        posBtn := [rx + (rw * 0.47), ry + (rh * 0.33) + 6]
     }
     ClickMouse(posBtn[1], posBtn[2])
 
@@ -2327,27 +2433,34 @@ useItem(itemName, useAmount := 1) {
     waitForInvVisible()
 
     ; Select Items tab
-    itemTab := getPositionFromAspectRatioUV(0.564405, -0.451327, storageAspectRatio)
+    itemTab := getPositionFromAspectRatioUV(0.564405, -0.411327, storageAspectRatio)
     ClickMouse(itemTab[1], itemTab[2])
+    Sleep, 200
 
     ; Search for item
-    searchBar := getPositionFromAspectRatioUV(0.56, -0.39, storageAspectRatio)
+    searchBar := getPositionFromAspectRatioUV(0.15, -0.335, storageAspectRatio)
     ClickMouse(searchBar[1], searchBar[2])
+
     SendInput, % itemName
     Sleep, 200
 
     ; Select item
-    selectItem := getPositionFromAspectRatioUV(-0.18, -0.25, storageAspectRatio)
+    selectItem := getPositionFromAspectRatioUV(-0.23, -0.25, storageAspectRatio)
     ClickMouse(selectItem[1], selectItem[2])
 
     ; Update quantity - Must be done each time to reset amount from previous item
-    updateQuantity:= getPositionFromAspectRatioUV(-0.70, 0.12, storageAspectRatio)
+    updateQuantity:= getPositionFromAspectRatioUV(-0.69, 0.07, storageAspectRatio)
     ClickMouse(updateQuantity[1], updateQuantity[2])
-    Send, % useAmount
+
+    Loop, 5 {
+        Send, {Backspace}
+    }
+
+    SendInput, % useAmount
     Sleep, 200
 
     ; Click Use
-    clickUse:= getPositionFromAspectRatioUV(-0.46, 0.12, storageAspectRatio)
+    clickUse:= getPositionFromAspectRatioUV(-0.48, 0.06, storageAspectRatio)
     ClickMouse(clickUse[1], clickUse[2])
 
     ; Clear search result
@@ -2369,7 +2482,7 @@ useItem(itemName, useAmount := 1) {
             Loop, 5 {
                 Highlight(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, 350)
 
-                if (containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Mari") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Marl") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Mar1") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "MarI") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Mar!")) {
+                if (containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Mori") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Marl") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Mar1") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "MarI") || containsText(options["Merchant_Username_OCR_X"], options["Merchant_Username_OCR_Y"], 200, 42, "Mar!")) {
                     merchantName := "Mari"
                     merchantPing := merchantOptions["MerchantWebhook_Mari_UserID"]
                     logMessage("[Merchant Detection]: Mari name found!", 1)
@@ -2388,7 +2501,6 @@ useItem(itemName, useAmount := 1) {
                     }
 
                     updateStatus("Merchant found! Pausing the macro...")
-                    Merchant_Webhook_Main(merchantName, merchantOptions["MerchantWebhookLink"], merchantOptions["MerchantWebhook_PS_Link"], merchantPing, "Merchant Face Screenshot")
                     
                     Hold_LeftX := winX + (1200.0 * (currentWinWidth / 1920.0))
                     Hold_LeftY := winY + (747.0 * (currentWinHeight / 1080.0)) + 2.75
@@ -2397,9 +2509,9 @@ useItem(itemName, useAmount := 1) {
                     Sleep, 300
 
                     ; Merchant Handler function
+                    Merchant_Webhook_Main(merchantName, merchantOptions["MerchantWebhookLink"], merchantOptions["MerchantWebhook_PS_Link"], merchantPing, "Merchant Face Screenshot")
                     Merchant_Handler(merchantName, merchantPing)
                     ClickMouse(900, 100)
-                    resetZoom()
 
                     Sleep, 450
 
@@ -2410,7 +2522,7 @@ useItem(itemName, useAmount := 1) {
                         clickMenuButton(3)
                         Sleep, 450
                         Send, {E 3}
-                        Hold_LeftClick(Hold_LeftX, Hold_LeftY, 1500)
+                        Hold_LeftClick(Hold_LeftX, Hold_LeftY, 2870)
                         jesterFound := false
 
                         Loop, 3 {
@@ -2471,9 +2583,9 @@ UpdateMerchantCooldown(merchantName) {
 
 
 LoadMerchantOptions(merchantName) {
-    global configPath, MerchantEntries
+    global merchantConfigPath_2, MerchantEntries
 
-    MerchantItems := getINIData(configPath)
+    MerchantItems := getINIData(merchantConfigPath_2)
     if (!MerchantItems) {
         logMessage("[LoadMerchantOptions] Unable to read merchant setting in config.ini")
         return
@@ -2562,7 +2674,7 @@ Merchant_Webhook_Main(Merchant_Name, webhook_url, ps_link := "", ping_user_id :=
     embedTitle := "**" Merchant_Name " Detected!**"
     embedColor := (Merchant_Name = "Mari") ? "255" : "8388736"  ; Blue for Mari, Purple for others
     embedThumbnail := (Merchant_Name = "Mari") 
-        ? "https://static.wikia.nocookie.net/sol-rng/images/3/37/MARI_HIGH_QUALITYY.png/revision/latest?cb=20240704045119"
+        ? "https://static.wikia.nocookie.net/sol-rng/images/d/df/Mari_cropped.png/revision/latest?cb=20241015111527"
         : "https://static.wikia.nocookie.net/sol-rng/images/d/db/Headshot_of_Jester.png/revision/latest?cb=20240630142936"
 
     ; Construct the payload for the webhook
@@ -2623,8 +2735,6 @@ Merchant_Handler(merchantName, merchant_ping) {
         Sleep, 80
     }
 
-    resetZoom()
-
     Sleep, 850
     MouseClickDrag, R, rX + rW*0.15, rY + 44 + rH*0.05, rX + rW*0.15, rY + 444 + rH*0.05
     Sleep, 550
@@ -2674,13 +2784,13 @@ Merchant_Handler(merchantName, merchant_ping) {
         itemsPurchased := 0
 
         ; Loop through merchant slots (adjust number if there are more slots)
-        Loop, 24 {
+        Loop, 15 {
             if (itemsPurchased >= totalItemsToPurchase) {
                 logMessage("All items have been successfully purchased. Exiting loop.", 1)
                 break
             }
 
-            if (itemCount >= 4) {
+            if (itemCount >= 5) {
                 MouseClick, WheelDown, , , 3
                 Sleep, 650
                 itemCount := 0
@@ -2745,7 +2855,7 @@ Jester_Exchange_Handler() {
     updateStatus("Processing Jester Exchange...")
     getRobloxPos(rX, rY, rH, rW)
 
-    WinGetPos, winX, winY, currentWinWidth, currentWinHeight, ahk_exe RobloxPlayerBeta.exe ;getRobloxPos got error somehow so i use this as alternative thing 
+    WinGetPos, winX, winY, currentWinWidth, currentWinHeight, ahk_exe RobloxPlayerBeta.exe
     ItemNotEnough_closeButtonX := winX + (960.0 * (currentWinWidth / 1920.0))
     ItemNotEnough_closeButtonY := winY + (652.0 * (currentWinHeight / 1080.0)) + 3.82
     Hold_LeftX := winX + (1200.0 * (currentWinWidth / 1920.0))
@@ -2757,9 +2867,12 @@ Jester_Exchange_Handler() {
         Sleep, 80
     }
     
-    Hold_LeftClick(Hold_LeftX, Hold_LeftY, 2500)
-    
+    Hold_LeftClick(Hold_LeftX, Hold_LeftY, 2300)
+
     Sleep, 850
+    Send, {E 3}
+    Sleep, 450
+
     MouseClickDrag, R, rX + rW*0.15, rY + 44 + rH*0.05, rX + rW*0.15, rY + 444 + rH*0.05
     Sleep, 550
 
@@ -2779,20 +2892,25 @@ Jester_Exchange_Handler() {
         itemConversionCount := 0
 
         for i, entry in Jester_Exchange_ItemEntries {
-            if (itemConversionCount >= 2) {
+            if (itemConversionCount >= 3) {
                 break
             }
 
             itemName := entry.ItemName
-            logMessage("[Jester Exchange Skibidi] Searching and selecting item: " itemName, 1)
+            logMessage("[Jester Exchange] Searching and selecting item: " itemName, 1)
             ClickMouse(ItemNotEnough_closeButtonX, ItemNotEnough_closeButtonY)
-            Sleep, 250
+            Sleep, 150
             ClickMouse(options["Jester_Item_Search_Bar_X"], options["Jester_Item_Search_Bar_Y"])
             Sleep, 200
             Send, %itemName%
             Sleep, 200
             ClickMouse(options["Jester_First_Item_Exchange_Slot_X"], options["Jester_First_Item_Exchange_Slot_Y"])
             Sleep, 250
+
+            ; skip void coin if it actually about to exchange it
+            if (containsText(options["Merchant_ItemName_OCR_X"], options["Merchant_ItemName_OCR_Y"], 323, 30, "Void Coin")) {
+                continue
+            }
 
             for amountIndex, amount in customAmounts {
                 ClickMouse(ItemNotEnough_closeButtonX, ItemNotEnough_closeButtonY)
@@ -2802,8 +2920,7 @@ Jester_Exchange_Handler() {
                 Send, %amount%
                 Sleep, 350
                 ClickMouse(options["Merchant_Purchase_Button_X"], options["Merchant_Purchase_Button_Y"])
-                Sleep, 750
-                Hold_LeftClick(Hold_LeftX, Hold_LeftY, 2550)
+                ;Hold_LeftClick(Hold_LeftX, Hold_LeftY, 2550)
             }
 
             exchangedItems.Push(itemName)
@@ -2956,7 +3073,7 @@ isPlayButtonVisible(){ ; Era 8 Play button: 750,860,420,110 (covers movement are
     w := targetW * 1.1
     h := height * 0.1
 
-    if (containsText(x, y, w, h, "Play") || containsText(x, y, w, h, "Ploy")) { ; Add commonly detected misspelling
+    if (containsText(x, y, w, h, "Start") || containsText(x, y, w, h, "stort")) { ; Add commonly detected misspelling
         logMessage("[isPlayButtonVisible] Play button detected with OCR")
         return true
     }
@@ -2992,10 +3109,10 @@ ClickPlay() {
         WinActivate, ahk_id %rHwnd%
     }
     
-    ; Click Play
-    Loop, 10 {
-        ClickMouse(pX + (width*0.5), pY + (height*0.85))
-        Sleep, 750
+    ; Click Play 954, 852
+    Loop, 5 {
+        ClickMouse(pX + (width*0.48), pY + (height*0.83))
+        Sleep, 350
     }
 
     ; Skip existing aura prompt
@@ -3003,7 +3120,7 @@ ClickPlay() {
     Sleep, 2000
     
     ; Enable Auto Roll - Completely removed from Initialize() to avoid toggling when macro is restarted, but game is not
-    ClickMouse(pX + (width*0.35), pY + (height*0.95))
+    ; ClickMouse(pX + (width*0.35), pY + (height*0.95))
 
     ; Enable Merchant Tracker - Introduced Era 8.5 Update
     ; No harm if user doesn't own
@@ -3202,7 +3319,7 @@ FindSolsRNGButtons() {
         yOffset := 0   ; Initialize yOffset before each retry
         numButtonsFound := 0 ; Variable to count if found the button pixel and count it
 
-        Loop, 8 { ; Loop through buttons
+        Loop, 5 { ; Loop through buttons
             buttonIndex := A_Index
             centerX := x + w / 2
             centerY := y + yOffset + h / 2
@@ -3280,7 +3397,7 @@ ToggleStorageYPOS_Highlight() {
     yOffsetIncrement := Floor(origYOffsetIncrement * scaleY)
 
     ; Highlight the search area for all potential button positions
-    Loop, 8 {
+    Loop, 5 {
         yOffset := (A_Index - 1) * yOffsetIncrement
         if (y + yOffset + h > currentWinHeight) {
             break
@@ -3506,11 +3623,12 @@ mainLoop(){
         ClickPlay()
     }
 	
-    enableAutoRoll() ; Check after ClickPlay to make sure not left off due to lag, etc
+    ; enableAutoRoll() ; Check after ClickPlay to make sure not left off due to lag, etc
 
-    if (!isFirstScan){
-        FindSolsRNGButtons()
-    }
+    ; if (!isFirstScan){
+    ;     FindSolsRNGButtons()
+    ; }
+    
     ; Equip preferred aura
     if (options.AutoEquipEnabled) {
         EquipAura(options.AutoEquipAura)
@@ -3544,21 +3662,7 @@ mainLoop(){
     Sleep, 250
 
     ; Run Item Scheduler entries
-    currentUnixTime := getUnixTime()
-    for each, entry in ItemSchedulerEntries {
-        if (entry.Enabled && currentUnixTime >= entry.NextRunTime) {
-            ; Account for biome
-            if (!entry.Biome || entry.Biome == "Any" || entry.Biome == currentBiome) { ; !entry.Biome check needed for pre-Biome legacy entries
-                ; Use specified number of item
-                UseItem(entry.ItemName, entry.Quantity)
-
-                ; Update the NextRunTime for the next scheduled run
-                frequencyInSeconds := entry.Frequency * (entry.TimeUnit = "Minutes" ? 60 : 3600)
-                nextRunTime := currentUnixTime + frequencyInSeconds
-                entry.NextRunTime := nextRunTime
-            }
-        }
-    }
+    checkItemScheduler()
 
     Sleep, 250
 
@@ -3665,7 +3769,7 @@ CreateMainUI() {
     Gui Font, s10 w600
     Gui Add, GroupBox, x16 y40 w231 h70 vObbyOptionGroup -Theme +0x50000007, Obby
     Gui Font, s9 norm
-    Gui Add, CheckBox, vObbyCheckBox x32 y59 w180 h26 +0x2, % " Do Obby (Every 2 Mins)"
+    Gui Add, CheckBox, vObbyCheckBox x32 y59 w180 h26 +0x2, % " Do Obby (Not work for EON1)"
     Gui Add, CheckBox, vObbyBuffCheckBox x32 y80 w200 h26 +0x2, % " Check for Obby Buff Effect"
     Gui Add, Button, gObbyHelpClick vObbyHelpButton x221 y50 w23 h23, ?
 
@@ -3679,11 +3783,11 @@ CreateMainUI() {
     Gui Font, s10 w600
     Gui Add, GroupBox, x16 y110 w467 h100 vCollectOptionGroup -Theme +0x50000007, Item Collecting
     Gui Font, s9 norm
-    Gui Add, CheckBox, vCollectCheckBox x32 y129 w190 h26 +0x2 +BackgroundTrans, % " Collect Items Around the Map"
+    Gui Add, CheckBox, vCollectCheckBox x32 y129 w190 h26 +0x2 +BackgroundTrans, % " Collect Items Around Map (not work atm)"
     Gui Add, Button, gCollectHelpClick vCollectHelpButton x457 y120 w23 h23, ?
     Gui Add, Text, vCollectPathText x233 y133 w100 h26, % " Collect Path:"
 
-    Gui Add, Radio, AltSubmit gNiko_OR_DefaultPath vCollectPathRadio1 x315 y131 w60 h20, Niko
+    Gui Add, Radio, AltSubmit gNiko_OR_DefaultPath vCollectPathRadio1 x315 y131 w60 h20, Allan
     Gui Add, Radio, AltSubmit gNiko_OR_DefaultPath vCollectPathRadio2 x375 y131 w60 h20, Default
     GuiControl,, CollectPathRadio1, % (options["IsNikoPath"] = 1) ? 1 : 0
     GuiControl,, CollectPathRadio2, % (options["IsNikoPath"] = 2) ? 1 : 0
@@ -3713,7 +3817,7 @@ CreateMainUI() {
     Gui Font, s10 w600
     Gui Add, GroupBox, x252 y40 w231 h170 vPotionCraftingGroup -Theme +0x50000007, Potion Crafting
     Gui Font, s9 norm
-    Gui Add, CheckBox, vPotionCraftingCheckBox x268 y58 w200 h22 +0x2, % " Automatic Potion Crafting"
+    Gui Add, CheckBox, vPotionCraftingCheckBox x268 y58 w200 h22 +0x2, % " Potion Crafting (NOT WORK IN EON1)"
     Gui Add, CheckBox, vPotionAutoAddCheckBox x268 y78 w200 h22 +0x2, % " Use Auto Add (Cycles Slots)"
     
     ; Potion Crafting Slots
@@ -3987,7 +4091,6 @@ Jester_Exchange_GUI() {
     Gui Add, DropDownList, x65 y245 w120 h20 vJesterItem8DropDown R9, % JesterExchangeOptions
     GuiControl, Choose, JesterItem8DropDown, % (options["Jester_Exchange_ItemSlot8"] ? options["Jester_Exchange_ItemSlot8"] : "None")
 
-
     ; Jester Exchange Button
     Gui, Add, Text, x200 y38 w250, Jester Pink Exchange Button (X, Y):
     Gui, Add, Edit, x200 y58 w50 vJesterExchangeButtonX, % options["Jester_Exchange_Button_X"]
@@ -4109,7 +4212,7 @@ MariMerchantSettings() {
     Gui Add, Text, x145 y10 w50 h15 BackgroundTrans, % "Amount:"
 
     for i, itemName in MariItemsArray {
-        v := options["Mari_ItemSlot" . i]
+        v := merchant_ItemOptions["Mari_ItemSlot" . i]
         values := SplitNumbers(v)
 
         checkBoxState := (values[2] = "True") ? 1 : 0
@@ -4135,7 +4238,7 @@ MariMerchantSettings() {
 
 MariMerchantSettingsSave() {
     Gui, MariMerchantSettings:Default
-    global options
+    global merchant_ItemOptions
 
     for i, itemName in MariItemsArray {
         itemControl := "MariSlot" . i . "Item"
@@ -4146,10 +4249,10 @@ MariMerchantSettingsSave() {
 
         ; config formatto: ItemName, True/False (checkbox thing), Amount
         checkBoxState := (MariSlotItem = 1) ? "True" : "False"
-        options["Mari_ItemSlot" . i] := itemName . "," . checkBoxState . "," . MariSlotAmount
+        merchant_ItemOptions["Mari_ItemSlot" . i] := itemName . "," . checkBoxState . "," . MariSlotAmount
     }
 
-    saveOptions()
+    Save_Merchant_ItemSettings()
 }
 
 
@@ -4163,7 +4266,7 @@ JesterMerchantSettings() {
     Gui Add, Text, x145 y10 w50 h15 BackgroundTrans, % "Amount:"
 
     for i, itemName in JesterItemsArray {
-        v := options["Jester_ItemSlot" . i]
+        v := merchant_ItemOptions["Jester_ItemSlot" . i]
         values := SplitNumbers(v)
 
         checkBoxState := (values[2] = "True") ? 1 : 0
@@ -4188,7 +4291,7 @@ JesterMerchantSettings() {
 
 JesterMerchantSettingsSave() {
     Gui, JesterMerchantSettings:Default
-    global options
+    global merchant_ItemOptions
 
     for i, itemName in JesterItemsArray {
         itemControl := "JesterSlot" . i . "Item"
@@ -4199,10 +4302,10 @@ JesterMerchantSettingsSave() {
 
         ; Format: ItemName,True/False,Amount
         checkBoxState := (JesterSlotItem = 1) ? "True" : "False"
-        options["Jester_ItemSlot" . i] := itemName . "," . checkBoxState . "," . JesterSlotAmount
+        merchant_ItemOptions["Jester_ItemSlot" . i] := itemName . "," . checkBoxState . "," . JesterSlotAmount
     }
 
-    saveOptions()
+    Save_Merchant_ItemSettings()
 }
 
 SplitNumbers(inputString) {
@@ -5524,11 +5627,12 @@ return
     F1::startMacro()
 
     F9:: ShowMousePos()
-    ; F7::
-    ;     WinGetPos, winX, winY, currentWinWidth, currentWinHeight, ahk_exe RobloxPlayerBeta.exe
-    ;     ItemNotEnough_closeButtonX := winX + (491 * (currentWinWidth / 1920)) ; 960 for windowed 1920x1080
-    ;     ItemNotEnough_closeButtonY := winY + (882 * (currentWinHeight / 1080)) + 9.5 ; 619 for windowed 1920x1080
-    ;     ClickMouse(ItemNotEnough_closeButtonX, ItemNotEnough_closeButtonY)
+    ; F11::
+    ;     ;Highlight(1039, 245, 150, 40, 5000) ; highlight box of shiftlock
+    ;     ; WinGetPos, winX, winY, currentWinWidth, currentWinHeight, ahk_exe RobloxPlayerBeta.exe
+    ;     ; ItemNotEnough_closeButtonX := winX + (491 * (currentWinWidth / 1920)) ; 960 for windowed 1920x1080
+    ;     ; ItemNotEnough_closeButtonY := winY + (882 * (currentWinHeight / 1080)) + 9.5 ; 619 for windowed 1920x1080
+    ;     ; ClickMouse(ItemNotEnough_closeButtonX, ItemNotEnough_closeButtonY)
     ;     return
     
 #If

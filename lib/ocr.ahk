@@ -166,6 +166,8 @@ DeleteHString(hString)
    DllCall("Combase.dll\WindowsDeleteString", "ptr", hString)
 }
 
+
+
 WaitForAsync(ByRef Object)
 {
    AsyncInfo := ComObjQuery(Object, IAsyncInfo := "{00000036-0000-0000-C000-000000000046}")

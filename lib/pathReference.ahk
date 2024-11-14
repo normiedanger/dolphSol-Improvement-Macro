@@ -3,7 +3,7 @@ SetWorkingDir, %A_ScriptDir%
 
 ; Reference script for paths
 
-getINIData(path){
+getINIData_Ref(path){
     FileRead, retrieved, %path%
 
     retrievedData := {}
@@ -29,60 +29,61 @@ getINIData(path){
     }
     return retrievedData
 }
-global options = getINIData("..\settings\config.ini")
+global options_Ref = getINIData_Ref("..\settings\config.ini")
 
-global regWalkFactor := 1.25 ; since i made the paths all with vip, normalize
+global regWalkFactor_Ref := 1.25 ; since i made the paths all with vip, normalize
 
-getWalkTime(d){
-    baseTime := d * (1 + (regWalkFactor - 1) * (1 - options.VIP))
+getWalkTime_Ref(d){
+    baseTime := d * (1 + (regWalkFactor_Ref - 1) * (1 - options_Ref.VIP))
     
-    if (options.Shifter) {
+    if (options_Ref.Shifter) {
         baseTime := baseTime / 1.50
     }
     
     return baseTime
 }
 
-walkSleep(d){
-    Sleep, % getWalkTime(d)
+walkSleep_Ref(d){
+    Sleep, % getWalkTime_Ref(d)
 }
 
-global azertyReplace := {"w":"z","a":"q"}
+global azertyReplace_Ref := {"w":"z","a":"q"}
 
-walkSend(k,t){
-    if (options.AzertyLayout && azertyReplace[k]){
-        k := azertyReplace[k]
+walkSend_Ref(k,t){
+    if (options_Ref.AzertyLayout && azertyReplace_Ref[k]){
+        k := azertyReplace_Ref[k]
     }
     Send, % "{" . k . (t ? " " . t : "") . "}"
 }
 
-press(k, duration := 50) {
-    walkSend(k,"Down")
-    walkSleep(duration)
-    walkSend(k,"Up")
+press_Ref(k, duration := 50) {
+    walkSend_Ref(k,"Down")
+    walkSleep_Ref(duration)
+    walkSend_Ref(k,"Up")
 }
-press2(k, k2, duration := 50) {
-    walkSend(k,"Down")
-    walkSend(k2,"Down")
-    walkSleep(duration)
-    walkSend(k,"Up")
-    walkSend(k2,"Up")
-}
-
-reset() {
-    press("Esc")
-    Sleep, 100
-    press("r")
-    Sleep, 100
-    press("Enter")
-    Sleep, 100
-}
-jump() {
-    press("Space")
+press_Ref2(k, k2, duration := 50) {
+    walkSend_Ref(k,"Down")
+    walkSend_Ref(k2,"Down")
+    walkSleep_Ref(duration)
+    walkSend_Ref(k,"Up")
+    walkSend_Ref(k2,"Up")
 }
 
-collect(num){
-    if (!options["ItemSpot" . num]){
+reset_Ref() {
+    press_Ref("Esc")
+    Sleep, 100
+    press_Ref("r")
+    Sleep, 100
+    press_Ref("Enter")
+    Sleep, 100
+}
+
+jump_Ref() {
+    press_Ref("Space")
+}
+
+collect_Ref(num){
+    if (!options_Ref["ItemSpot" . num]){
         return
     }
     Loop, 5
@@ -94,12 +95,12 @@ collect(num){
     Sleep, 100
 }
 
-isFullscreen() {
+isFullscreen_Ref() {
 	WinGetPos,,, w, h, Roblox
 	return (w = A_ScreenWidth && h = A_ScreenHeight)
 }
 
-GetRobloxHWND()
+GetRobloxHWND_Ref()
 {
 	if (hwnd := WinExist("Roblox ahk_exe RobloxPlayerBeta.exe"))
 		return hwnd
@@ -112,9 +113,9 @@ GetRobloxHWND()
 		return 0
 }
 
-getRobloxPos(ByRef x := "", ByRef y := "", ByRef width := "", ByRef height := "", hwnd := ""){
+getRobloxPos_Ref(ByRef x := "", ByRef y := "", ByRef width := "", ByRef height := "", hwnd := ""){
     if !hwnd
-        hwnd := GetRobloxHWND()
+        hwnd := GetRobloxHWND_Ref()
     VarSetCapacity( buf, 16, 0 )
     DllCall( "GetClientRect" , "UPtr", hwnd, "ptr", &buf)
     DllCall( "ClientToScreen" , "UPtr", hwnd, "ptr", &buf)
@@ -125,24 +126,24 @@ getRobloxPos(ByRef x := "", ByRef y := "", ByRef width := "", ByRef height := ""
     height := NumGet(&buf,12,"Int")
 }
 
-getColorComponents(color){
+getColorComponents_Ref(color){
     return [color & 255, (color >> 8) & 255, (color >> 16) & 255]
 }
 
-compareColors(color1, color2) ; determines how far apart 2 colors are
+compareColors_Ref(color1, color2) ; determines how far apart 2 colors are
 {
-    color1V := getColorComponents(color1)
-    color2V := getColorComponents(color2)
+    color1V := getColorComponents_Ref(color1)
+    color2V := getColorComponents_Ref(color2)
 
     cV := [color1V[1] - color2V[1], color1V[2] - color2V[2], color1V[3] - color2V[3]]
     dist := Abs(cV[1]) + Abs(cV[2]) + Abs(cV[3])
     return dist
 }
 
-closeChat(){
-    getRobloxPos(pX,pY,width,height)
+closeChat_Ref(){
+    getRobloxPos_Ref(pX,pY,width,height)
     PixelGetColor, chatCheck, % pX + 75, % pY + 12, RGB
-    if (compareColors(chatCheck,0xffffff) < 16){ ; is chat open??
+    if (compareColors_Ref(chatCheck,0xffffff) < 16){ ; is chat open??
         MouseMove, % pX + 75, % pY + 12
         Sleep, 300
         MouseClick
@@ -150,14 +151,14 @@ closeChat(){
     }
 }
 
-global menuBarOffset := 10 ;10 pixels from left edge
+global menuBarOffset_Ref := 10 ;10 pixels from left edge
 
-getMenuButtonPosition(num, ByRef posX := "", ByRef posY := ""){ ; num is 1-7, 1 being top, 7 only existing if you are the private server owner
-    getRobloxPos(rX, rY, width, height)
+getMenuButtonPosition_Ref(num, ByRef posX := "", ByRef posY := ""){ ; num is 1-7, 1 being top, 7 only existing if you are the private server owner
+    getRobloxPos_Ref(rX, rY, width, height)
 
     menuBarVSpacing := 10.5*(height/1080)
     menuBarButtonSize := 58*(width/1920)
-    menuEdgeCenter := [rX + menuBarOffset, rY + (height/2)]
+    menuEdgeCenter := [rX + menuBarOffset_Ref, rY + (height/2)]
     startPos := [menuEdgeCenter[1]+(menuBarButtonSize/2),menuEdgeCenter[2]+(menuBarButtonSize/4)-(menuBarButtonSize+menuBarVSpacing-1)*3.5] ; final factor = 0.5x (x is number of menu buttons visible to all, so exclude private server button)
     
     posX := startPos[1]
@@ -166,83 +167,83 @@ getMenuButtonPosition(num, ByRef posX := "", ByRef posY := ""){ ; num is 1-7, 1 
     MouseMove, % posX, % posY
 }
 
-clickMenuButton(num){
-    getMenuButtonPosition(num, posX, posY)
+clickMenuButton_Ref(num){
+    getMenuButtonPosition_Ref(num, posX, posY)
     MouseMove, posX, posY
     Sleep, 200
     MouseClick
 }
 
-rotateCameraMode(){
-    press("Esc")
+rotateCameraMode_Ref(){
+    press_Ref("Esc")
     Sleep, 500
-    press("Tab")
+    press_Ref("Tab")
     Sleep, 500
-    press("Down")
+    press_Ref("Down")
     Sleep, 150
-    press("Right")
+    press_Ref("Right")
     Sleep, 150
-    press("Right")
+    press_Ref("Right")
     Sleep, 150
-    press("Esc")
+    press_Ref("Esc")
     Sleep, 250
 
     camFollowMode := !camFollowMode
 }
 
-alignCamera(){
-    closeChat()
+alignCamera_Ref(){
+    closeChat_Ref()
     Sleep, 200
 
-    reset()
+    reset_Ref()
     Sleep, 100
 
-    getRobloxPos(rX,rY,rW,rH)
+    getRobloxPos_Ref(rX,rY,rW,rH)
 
-    rotateCameraMode()
+    rotateCameraMode_Ref()
 
-    clickMenuButton(2)
+    clickMenuButton_Ref(2)
     Sleep, 500
     
-    MouseMove, % rX + rW*0.15, % rY + 44 + rH*0.05 + options.BackOffset
+    MouseMove, % rX + rW*0.15, % rY + 44 + rH*0.05 + options_Ref.BackOffset
     Sleep, 200
     MouseClick
     Sleep, 200
 
-    rotateCameraMode()
+    rotateCameraMode_Ref()
 
     Sleep, 100
 
-    walkSend("d","Down")
-    walkSleep(200)
-    jump()
-    walkSleep(400)
-    walkSend("d","Up")
-    walkSend("w","Down")
-    walkSleep(500)
-    jump()
-    walkSleep(900)
-    walkSend("w","Up")
+    walkSend_Ref("d","Down")
+    walkSleep_Ref(200)
+    jump_Ref()
+    walkSleep_Ref(400)
+    walkSend_Ref("d","Up")
+    walkSend_Ref("w","Down")
+    walkSleep_Ref(500)
+    jump_Ref()
+    walkSleep_Ref(900)
+    walkSend_Ref("w","Up")
 
-    rotateCameraMode()
+    rotateCameraMode_Ref()
 
     Sleep, 1500
 
-    rotateCameraMode()
+    rotateCameraMode_Ref()
 
-    reset()
+    reset_Ref()
     Sleep, 2000
 }
 
-global azertyReplace := {"w": "z", "a": "q"} 
+global azertyReplace_Ref := {"w": "z", "a": "q"} 
 
-sendKey(key, type = ""){
- azertyKey := azertyReplace[key]
- key := options.AzertyLayout && azertyKey ? azertyKey : key
+sendKey_Ref(key, type = ""){
+ azertyKey := azertyReplace_Ref[key]
+ key := options_Ref.AzertyLayout && azertyKey ? azertyKey : key
  
  Send {%key% %type%}
 }
 
-arcaneTeleport(){
-    press("x",50)
+arcaneTeleport_Ref(){
+    press_Ref("x",50)
 }

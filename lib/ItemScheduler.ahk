@@ -74,7 +74,11 @@ AddItemEntry(idx, entry, xPos, yPos) {
     GuiControl, ChooseString, Item%idx%DropDown, % entry.ItemName
     Gui Add, Edit, vQuantity%idx%Edit x+5 yp wp+10 w40 h20 Number Center, % entry.Quantity
     Gui Add, Edit, vFrequency%idx%Edit x+5 yp w30 h20 Number Center, % entry.Frequency
-    Gui Add, DropDownList, vTimeUnit%idx%DropDown x+ yp w80 h20 R2, Minutes||Hours
+    Gui Add, DropDownList, vTimeUnit%idx%DropDown x+ yp w80 h20 R3, Seconds||Minutes||Hours
+
+    ; Select the correct time unit
+    GuiControl, ChooseString, TimeUnit%idx%DropDown, % entry.TimeUnit ? entry.TimeUnit : "Minutes"
+
     Gui Add, DropDownList, vBiome%idx%DropDown x+ yp w75 h20 R10, % biomeList
     GuiControl, ChooseString, Biome%idx%DropDown, % entry.Biome ? entry.Biome : "Any"
     Gui Add, Button, gDeleteItemEntry vDelete%idx% x+m yp w80 h20, Delete
