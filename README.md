@@ -39,7 +39,15 @@ Discord Server (to official dolphSol server): https://discord.gg/DYUqwJchuV
 
 (?) Soon...
 
-### Current Development Team
-noteab
-steveonly1
-curiouspengu
+# Radiant Team
+### Owners
+- Curious Pengu (Pathing Development, Radiance Macro Development)
+- steveonly1 (Radiance Macro Development)
+- noteab (dSIM Development)
+### Developers
+- TheEndyy (Roll detection)
+- Niko (Pathing)
+- bored man
+- Allan (Pathing, Pathing Development)
+### Graphical Designer
+- Cate
