@@ -1,0 +1,1538 @@
+[
+  {
+    "type": "keyboard",
+    "key": "[",
+    "pressed": false,
+    "timestamp": 0.0
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.esc",
+    "pressed": true,
+    "timestamp": 1.4668540954589844
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.esc",
+    "pressed": false,
+    "timestamp": 1.5808510780334473
+  },
+  {
+    "type": "keyboard",
+    "key": "r",
+    "pressed": true,
+    "timestamp": 1.7174980640411377
+  },
+  {
+    "type": "keyboard",
+    "key": "r",
+    "pressed": false,
+    "timestamp": 1.8030083179473877
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.enter",
+    "pressed": true,
+    "timestamp": 1.8570055961608887
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.enter",
+    "pressed": false,
+    "timestamp": 1.9500055313110352
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 4.536192178726196
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.0409016609191895
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.070816516876221
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.1025779247283936
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.148633718490601
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.1806347370147705
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.211924314498901
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.242549657821655
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.274544715881348
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.30454421043396
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.336610317230225
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.368612766265869
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.399611473083496
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.431231260299683
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.4782328605651855
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.508749723434448
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.539900779724121
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.5705225467681885
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.601777076721191
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.632824659347534
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.664825677871704
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.695701360702515
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.74369478225708
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.773692607879639
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.805692434310913
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.836896181106567
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.866538763046265
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.896808862686157
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.928810358047485
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 5.960697412490845
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.005711555480957
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.03727126121521
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.068765878677368
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.10076642036438
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.131766319274902
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.163766622543335
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.1951494216918945
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.226149797439575
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.257148742675781
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.309328317642212
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.335328817367554
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.3658599853515625
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.397184371948242
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.428190469741821
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.46119236946106
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.4911863803863525
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.522905349731445
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.55490779876709
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.6004345417022705
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.632044792175293
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.663043022155762
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.694045305252075
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.725233554840088
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 6.757230520248413
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 6.762231111526489
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.270493507385254
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.302494287490845
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.334494113922119
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.365218877792358
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.394854545593262
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.426855564117432
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.473853826522827
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.505962133407593
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.536962985992432
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.568575859069824
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.600058317184448
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.632057189941406
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.6640541553497314
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 7.695054531097412
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 7.726655960083008
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 8.071930408477783
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 8.58224081993103
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 8.61323857307434
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 8.614238023757935
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.12828540802002
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.160098314285278
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.192098140716553
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.22210431098938
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.251597166061401
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.282593727111816
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.31412124633789
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.346121549606323
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.379125356674194
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.42512559890747
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.456125259399414
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.486121892929077
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 9.49912428855896
+  },
+  {
+    "type": "keyboard",
+    "key": "w",
+    "pressed": true,
+    "timestamp": 9.650147438049316
+  },
+  {
+    "type": "keyboard",
+    "key": "w",
+    "pressed": false,
+    "timestamp": 9.76388692855835
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 9.870007991790771
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 9.888946056365967
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 10.039684057235718
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 10.356369018554688
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 10.444168329238892
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 10.949100732803345
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 10.981073141098022
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 11.013078689575195
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 11.058084487915039
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 11.08874797821045
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 11.119746208190918
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 11.151746988296509
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 11.182746171951294
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.205464839935303
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.71558952331543
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.747575759887695
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.778589010238647
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.809590339660645
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.841590881347656
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 11.871994256973267
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 11.901994466781616
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 12.166735649108887
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 12.360095024108887
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 12.992576122283936
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 13.225641250610352
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 13.234644174575806
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 13.437111377716064
+  },
+  {
+    "type": "keyboard",
+    "key": "f",
+    "pressed": true,
+    "timestamp": 13.97658634185791
+  },
+  {
+    "type": "keyboard",
+    "key": "f",
+    "pressed": false,
+    "timestamp": 14.023234128952026
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 14.14696741104126
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 14.272276639938354
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 14.407200336456299
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 14.868907690048218
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 15.1351318359375
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 15.439339399337769
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 15.907366514205933
+  },
+  {
+    "type": "keyboard",
+    "key": "f",
+    "pressed": true,
+    "timestamp": 16.009068489074707
+  },
+  {
+    "type": "keyboard",
+    "key": "f",
+    "pressed": false,
+    "timestamp": 16.097777605056763
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 16.30335760116577
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 16.37534236907959
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 16.456246614456177
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 16.541120052337646
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 16.617483854293823
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 16.706523418426514
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 16.78219962120056
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 16.878655672073364
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 16.951655626296997
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 17.15671682357788
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 17.3248770236969
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 17.48604416847229
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 17.988242864608765
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.020243406295776
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.066041946411133
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.09617567062378
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.12817645072937
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.15917658805847
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 18.179617881774902
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.189618587493896
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.220139741897583
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.25014066696167
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.282142162322998
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 18.329612255096436
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 18.357614040374756
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 18.41361403465271
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 18.72834348678589
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 18.80534338951111
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 19.000298500061035
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 19.053220987319946
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 19.137888431549072
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 19.22231936454773
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 19.307321548461914
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 19.403809070587158
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 19.51428484916687
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 19.737677574157715
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 19.841270208358765
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.380939960479736
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.391942501068115
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.417940855026245
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.449784517288208
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.48049759864807
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.512498140335083
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.544498682022095
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.576497554779053
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.607292890548706
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.638105392456055
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.684103965759277
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.715210676193237
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.749222993850708
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.778223276138306
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 20.80913805961609
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 20.82913827896118
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 21.075472831726074
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 21.196959495544434
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 21.277467966079712
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 21.37472939491272
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 21.466681718826294
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 21.988391160964966
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.497105360031128
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.52810788154602
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.560142993927002
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.591733932495117
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.62298893928528
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.65398931503296
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.685485363006592
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.732484817504883
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.764485120773315
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.79512095451355
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.82612156867981
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.85712170600891
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.888240098953247
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.920241117477417
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.952240705490112
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 22.997321605682373
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 23.029322385787964
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.040323734283447
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.54555654525757
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.57755732536316
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.608367204666138
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.639597177505493
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.68648648262024
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 23.717485904693604
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 23.72149085998535
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": false,
+    "timestamp": 23.75115442276001
+  },
+  {
+    "type": "keyboard",
+    "key": "w",
+    "pressed": true,
+    "timestamp": 24.14382028579712
+  },
+  {
+    "type": "keyboard",
+    "key": "w",
+    "pressed": false,
+    "timestamp": 24.36802101135254
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 24.44955563545227
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 24.494566440582275
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 24.5802583694458
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 24.777745008468628
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": false,
+    "timestamp": 24.95221447944641
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 25.45764970779419
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 25.488648414611816
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 25.519644021987915
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 25.550740480422974
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 25.561645984649658
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 25.583658456802368
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 25.726048469543457
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 25.73004722595215
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.23626708984375
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.267265796661377
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.298929452896118
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.329928636550903
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.36092972755432
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.392109870910645
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 26.42410969734192
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": true,
+    "timestamp": 26.458110332489014
+  },
+  {
+    "type": "keyboard",
+    "key": "s",
+    "pressed": false,
+    "timestamp": 26.583399772644043
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 26.839152097702026
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 26.955581665039062
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 27.03556489944458
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 27.13775372505188
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 27.19701623916626
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 27.29897379875183
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 27.359973430633545
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 27.433462619781494
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 27.47648286819458
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 27.62760639190674
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 27.745748281478882
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": true,
+    "timestamp": 27.828166961669922
+  },
+  {
+    "type": "keyboard",
+    "key": "e",
+    "pressed": false,
+    "timestamp": 27.91611957550049
+  }
+]
