@@ -1,0 +1,65 @@
+{
+    "10k+": {
+        "Powered": {"color": [255, 255, 255], "tolerance": 50},
+        "Aquatic": {"color": [76, 133, 255], "tolerance": 50},
+        "Nautilus": {"color": [85, 98, 255], "tolerance": 50},
+        "Permafrost": {"color": [125, 255, 223], "tolerance": 50},
+        "Stormal": {"color": [137, 137, 137], "tolerance": 50},
+        "Exotic": {"color": [56, 197, 218], "tolerance": 50},
+        "Comet": {"color": [190, 210, 255], "tolerance": 50},
+        "Jade": {"color": [9, 104, 55], "tolerance": 50},
+        "Aether": {"color": [112, 171, 185], "tolerance": 50},
+        "BOUNDED": {"color": [37, 87, 255], "tolerance": 50},
+        "Celestial": {"color": [151, 161, 255], "tolerance": 50},
+        "Galaxy": {"color": [83, 67, 254], "tolerance": 50},
+        "Kyawthuite": {"color": [40, 22, 145], "tolerance": 50}
+    },
+    "1m+": {
+        "Arcane": {"color": [110, 150, 255], "tolerance": 50},
+        "Gravitational": {"color": [81, 99, 255], "tolerance": 40},
+        "Virtual": {"color": [76, 139, 255], "tolerance": 35},
+        "Poseidon": {"color": [14, 97, 136], "tolerance": 35},
+        "Zeus": {"color": [255, 250, 211], "tolerance": 35},
+        "Galaxy": {"color": [81, 66, 255], "tolerance": 50},
+        "Hades": {"color": [119, 37, 0], "tolerance": 35},
+        "Celestial Divine": {"color": [170, 134, 200], "tolerance": 50},
+        "HYPER-VOLT": {"color": [141, 97, 255], "tolerance": 50}
+    },
+    "10m+": {
+        "Starscourge": {"color": [255, 128, 128], "tolerance": 38},
+        "Sailor": {"color": [116, 158, 255], "tolerance": 50},
+        "Stormal Hurricane": {"color": [137, 137, 137], "tolerance": 50},
+
+        "Sirius": 
+        {
+            "color": [251, 194, 140], "tolerance": 50, "rarity": "14000000", 
+            "aura_gif":"https://static.wikia.nocookie.net/sol-rng/images/c/c2/Siriusincollection.gif"
+        },
+
+        "Arcane Legacy OR Dark (1/2)": {"color": [143, 174, 255], "tolerance": 50},
+        "Chromatic": {"color": [210, 40, 43], "tolerance": 40},
+        "Aviator": {"color": [220, 148, 70], "tolerance": 40},
+        "Innovator": {"color": [26, 25, 71], "tolerance": 35},
+        "Ethereal": {"color": [207, 191, 255], "tolerance": 30},
+        "Overseer": {"color": [157, 192, 255], "tolerance": 30, "rarity": "45000000"},
+        "Exotic Apex": {"color": [56, 198, 217], "tolerance": 45},
+        "Matrix": {"color": [91, 255, 177], "tolerance": 45}
+    },
+    "100m+": {
+        "Chromatic Genesis": {"color": [95, 102, 255], "tolerance": 60, "rarity": "99,999,999"},
+        "Starscourge Radiant": {"color": [153, 200, 255], "tolerance": 60},
+        "Overture": {"color": [61, 101, 211], "tolerance": 30},
+        "Symphony": {"color": [197, 228, 255], "tolerance": 40},
+        "Archangel": {"color": [231, 195, 156], "tolerance": 40},
+        "SOVEREIGN": {"color": [162, 194, 173], "tolerance": 50},
+        "IMPEACHED": {"color": [166, 102, 255], "tolerance": 45},
+        "Overture History": {"color": [89, 255, 150], "tolerance": 30},
+        "BLOODLUST": {"color": [130, 22, 24], "tolerance": 40},
+        "Atlas": {"color": [186, 128, 73], "tolerance": 50},
+        "Abyssal Hunter": {"color": [43, 83, 255], "tolerance": 40},
+        "GARGANTUA": {"color": [255, 172, 55], "tolerance": 50},
+        "Ruins": {"color": [119, 178, 57], "tolerance": 50},
+        "Matrix Overdrive": {"color": [212, 31, 34], "tolerance": 40},
+        "Memory": {"color": [82, 65, 209], "tolerance": 30}
+    }
+}
