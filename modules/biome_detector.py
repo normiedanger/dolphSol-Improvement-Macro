@@ -22,7 +22,9 @@ class BiomeDetector:
             "Starfall": r"Starfall|stafall|sarfall|strfall|STARFALL",
             "Corruption": r"Corruption|corupt|corrupton|corrup|CORRUPTION",
             "Null": r"Null|nul|nui|nll|NULL",
-            "Glitched": r"\b\d\.\d{8,}\b"
+            "Glitched": r"\b\d\.\d{8,}\b",
+            "Graveyard" : r"Graveyard|grave|yard|GRAVEYARD",
+            "Pumpkin Moon": r"Pumpkin Moon|pumpkin|moon|PUMPKIN MOON|PUMPKIN|MOON|Pumpkinmoon|pumpkinmoon",
         }
         
         self.biome_data = {
@@ -34,7 +36,9 @@ class BiomeDetector:
             "Starfall": {"color": 0x011ab7, "duration": 600},
             "Corruption": {"color": 0x6d32a8, "duration": 660},
             "Null": {"color": 0x838383, "duration": 90},
-            "Glitched": {"color": 0xbfff00, "duration": 164}
+            "Glitched": {"color": 0xbfff00, "duration": 164},
+            "Graveyard": {"color": 0x424242, "duration": 90},
+            "Pumpkin Moon": {"color": 0x762c00, "duration": 90},
         }
 
         # template for Glitched biome

@@ -1389,7 +1389,9 @@ class DiscordMacroUI:
             "Biome_Notifer_Starfall": "Starfall",
             "Biome_Notifer_Corruption": "Corruption",
             "Biome_Notifer_Null": "Null",
-            "Biome_Notifer_Glitched": "Glitched"
+            "Biome_Notifer_Glitched": "Glitched",
+            "Biome_Notifer_Graveyard": "Graveyard",
+            "Biome_Notifer_Pumpkin_Moon": "Pumpkin Moon",
         }
 
         # Dropdown and snip button for each biome
@@ -1464,7 +1466,7 @@ class DiscordMacroUI:
         # Biome dropdown
         biome_var = tk.StringVar()
         biome_var.set(entry["biome"])
-        biome_combobox = ttk.Combobox(parent, values=["Any", "Windy", "Rainy", "Snowy", "Sandstorm", "Hell", "Starfall", "Corruption", "Null", "Glitched"], textvariable=biome_var, width=10)
+        biome_combobox = ttk.Combobox(parent, values=["Any", "Windy", "Rainy", "Snowy", "Sandstorm", "Hell", "Starfall", "Corruption", "Null", "Glitched", "Graveyard", "Pumpkin Moon"], textvariable=biome_var, width=10)
         biome_combobox.grid(row=row, column=5, padx=5, pady=5)
         biome_combobox.bind("<<ComboboxSelected>>", lambda e: self.save_on_update())
 
