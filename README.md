@@ -41,13 +41,11 @@ Discord Server (to official dolphSol server): https://discord.gg/DYUqwJchuV
 
 # Radiant Team
 ### Owners
-- Curious Pengu (Pathing Development, Radiance Macro Development)
-- steveonly1 (Radiance Macro Development)
-- noteab (dSIM Development)
+- **Curious Pengu** | _Pathing Development, Radiance Macro Development, Genesis Stat Tracker, Lunaria Pathing System_
+- **steveonly1** | _Radiance Macro Development_
+- **noteab** | _dSIM Development_
 ### Developers
-- TheEndyy (Roll detection)
-- Niko (Pathing)
-- bored man
-- Allan (Pathing, Pathing Development)
+- **TheEndyy** | _Roll detection_
+- **bored man**
 ### Graphical Designer
-- Cate
+- **Cate**
