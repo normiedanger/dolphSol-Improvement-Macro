@@ -9,3 +9,4 @@ Pillow
 requests
 ahk
 pystray
+discord.py

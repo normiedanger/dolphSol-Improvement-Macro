@@ -12,7 +12,7 @@ from modules.snipping import SnippingWidget
 class DiscordMacroUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Improvement Sol's v1.5.0 (EON1)")
+        self.root.title("Improvement Sol's v1.5.1 (EON1)")
         self.root.configure(bg="#2C2F33")
         self.dark_mode = True
         
