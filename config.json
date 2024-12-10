@@ -29,7 +29,7 @@
     ],
     "collection_back_button_coords": [
         386,
-        129
+        140
     ],
     "inv_menu_coords": [
         41,
@@ -129,24 +129,24 @@
         0,
         0
     ],
-    "CollectItems": 0,
+    "CollectItems": 1,
     "DoObby": 0,
     "AutoChalice": 0,
-    "AutoClaimDailyQuests": false,
+    "AutoClaimDailyQuests": true,
     "AZERTY_Keyboard": false,
     "item_scheduler": [],
-    "Enabled_AutoEquip": 0,
-    "AutomaticPotionCrafting": true,
-    "Equipped_Aura": "Common",
+    "Enabled_AutoEquip": 1,
+    "AutomaticPotionCrafting": false,
+    "Equipped_Aura": "Emerald",
     "Special_Aura": 0,
-    "WebhookLink": "",
-    "Webhook_Enabled": 0,
-    "WebhookInventory": false,
-    "WebhookInventoryInterval": 10,
-    "WebhookUserID": "",
-    "WebhookGlitchPingID": "",
-    "DiscordBotToken": "",
-    "DiscordBot_Enabled": 0,
+    "WebhookLink": "https://discord.com/api/webhooks/1226232316553330708/kz7BAD8_f1lbmLxPz3ip7r9cg3j0-BK6IOqAH_ygE4-0hwsUfh8jw3C8g8wNq4NRL-6L",
+    "Webhook_Enabled": 1,
+    "WebhookInventory": true,
+    "WebhookInventoryInterval": 0,
+    "WebhookUserID": "1018875765565177976",
+    "WebhookGlitchPingID": "1018875765565177976",
+    "DiscordBotToken": "MTMxNTgxNDcwMjE3NzMyNTE1OQ.GxKAaS.gslF3mCDnkz22ZJKoE4shnWYvTsKdoooYobkcM",
+    "DiscordBot_Enabled": 1,
     "Biome_Notifer_Windy": "Message",
     "Biome_Notifer_Rainy": "Message",
     "Biome_Notifer_Sandstorm": "Message",
@@ -155,9 +155,9 @@
     "Biome_Notifer_Corruption": "Message",
     "Biome_Notifer_Null": "Message",
     "Biome_Notifer_Glitched": "Message",
-    "WebhookAuraImages": 0,
-    "WebhookRollSendMinimum": 10000,
-    "WebhookRollPingMinimum": 100000,
+    "WebhookAuraImages": 1,
+    "WebhookRollSendMinimum": 999999,
+    "WebhookRollPingMinimum": 9999999,
     "Biome_Notifer_Snowy": "Message",
     "Biome_Region": [
         4,
@@ -204,5 +204,6 @@
     ],
     "CraftingSlot1": "None",
     "CraftingSlot2": "None",
-    "CraftInterval": 10
+    "CraftInterval": 10,
+    "PrivateServerLink": "https://www.roblox.com/games/15532962292/Sols-RNG?privateServerLinkCode=40131426988328916077167689347790"
 }

@@ -1344,7 +1344,18 @@ class DiscordMacroUI:
     def show_extras_credit(self):
         extras_window = tk.Toplevel(self.root)
         extras_window.title("Extras Credit")
-        extras_window.geometry("300x450")
+        extras_window.geometry("450x450")
+
+        contributors_frame = ttk.LabelFrame(extras_window, text="Contributors (Development)")
+        contributors_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        contributors = [
+            "vexthecoder -",
+            "Created the Discord Bot code and functionality."
+        ]
+
+        for contributor in contributors:
+            ttk.Label(contributors_frame, text=contributor).pack(pady=2)
         
         testers_frame = ttk.LabelFrame(extras_window, text="Macro Testers (Discord)")
         testers_frame.pack(fill="both", expand=True, padx=10, pady=10)
