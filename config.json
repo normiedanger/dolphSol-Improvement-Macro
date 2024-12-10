@@ -1,0 +1,208 @@
+{
+    "aura_storage_coords": [
+        35,
+        401
+    ],
+    "equip_tab_normal": [
+        919,
+        328
+    ],
+    "equip_tab_special": [
+        1272,
+        329
+    ],
+    "search_bar_coords": [
+        832,
+        361
+    ],
+    "first_aura_coords": [
+        819,
+        434
+    ],
+    "equip_button_coords": [
+        621,
+        629
+    ],
+    "collection_button_coords": [
+        38,
+        466
+    ],
+    "collection_back_button_coords": [
+        386,
+        129
+    ],
+    "inv_menu_coords": [
+        41,
+        535
+    ],
+    "inv_itemtab_button_coords": [
+        1263,
+        329
+    ],
+    "inv_sbar_button_coords": [
+        836,
+        364
+    ],
+    "inv_firstitem_coords": [
+        839,
+        435
+    ],
+    "inv_amountbox_coords": [
+        596,
+        579
+    ],
+    "inv_use_button_coords": [
+        689,
+        575
+    ],
+    "quest_menu_coords": [
+        39,
+        596
+    ],
+    "quest_dailytab_coords": [
+        1269,
+        329
+    ],
+    "quest_firstquest_coords": [
+        1103,
+        538
+    ],
+    "quest_claim_button_coords": [
+        626,
+        764
+    ],
+    "potion_sbar_coords": [
+        920,
+        331
+    ],
+    "potion_firstpotion_coords": [
+        1146,
+        405
+    ],
+    "potion_craft_coords": [
+        597,
+        568
+    ],
+    "potion_autobutton_coords": [
+        723,
+        565
+    ],
+    "potion_manualbutton_coords": [
+        796,
+        622
+    ],
+    "potion_manualamount_coords": [
+        724,
+        621
+    ],
+    "potion_1manualbox_coords": [
+        722,
+        617
+    ],
+    "potion_2manualbox_coords": [
+        714,
+        673
+    ],
+    "potion_3manualbox_coords": [
+        720,
+        729
+    ],
+    "potion_4manualbox_coords": [
+        722,
+        704
+    ],
+    "potion_5manualbox_coords": [
+        717,
+        755
+    ],
+    "potion_6manualbox_coords": [
+        715,
+        755
+    ],
+    "Sub_ItemSpot": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
+    "CollectItems": 0,
+    "DoObby": 0,
+    "AutoChalice": 0,
+    "AutoClaimDailyQuests": false,
+    "AZERTY_Keyboard": false,
+    "item_scheduler": [],
+    "Enabled_AutoEquip": 0,
+    "AutomaticPotionCrafting": true,
+    "Equipped_Aura": "Common",
+    "Special_Aura": 0,
+    "WebhookLink": "",
+    "Webhook_Enabled": 0,
+    "WebhookInventory": false,
+    "WebhookInventoryInterval": 10,
+    "WebhookUserID": "",
+    "WebhookGlitchPingID": "",
+    "DiscordBotToken": "",
+    "DiscordBot_Enabled": 0,
+    "Biome_Notifer_Windy": "Message",
+    "Biome_Notifer_Rainy": "Message",
+    "Biome_Notifer_Sandstorm": "Message",
+    "Biome_Notifer_Hell": "Message",
+    "Biome_Notifer_Starfall": "Message",
+    "Biome_Notifer_Corruption": "Message",
+    "Biome_Notifer_Null": "Message",
+    "Biome_Notifer_Glitched": "Message",
+    "WebhookAuraImages": 0,
+    "WebhookRollSendMinimum": 10000,
+    "WebhookRollPingMinimum": 100000,
+    "Biome_Notifer_Snowy": "Message",
+    "Biome_Region": [
+        4,
+        860,
+        260,
+        32
+    ],
+    "EnableAutoMerchant": 0,
+    "ItemExchangeJester": 0,
+    "purchase_amount_button": [
+        687,
+        587
+    ],
+    "purchase_button": [
+        728,
+        636
+    ],
+    "merchant_open_button": [
+        575,
+        914
+    ],
+    "merchant_name_ocr_pos": [
+        742,
+        674,
+        189,
+        40
+    ],
+    "item_name_ocr_pos": [
+        725,
+        369,
+        215,
+        27
+    ],
+    "first_item_slot_pos": [
+        568,
+        711
+    ],
+    "Merchant_Webhook": [],
+    "Mari_AutoBuyItems": {},
+    "Jester_AutoBuyItems": {},
+    "merchant_dialogue_box": [
+        1101,
+        803
+    ],
+    "CraftingSlot1": "None",
+    "CraftingSlot2": "None",
+    "CraftInterval": 10
+}

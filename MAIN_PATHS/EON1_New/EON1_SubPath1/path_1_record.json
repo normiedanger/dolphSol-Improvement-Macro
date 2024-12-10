@@ -1,0 +1,90 @@
+[
+  {
+    "type": "keyboard",
+    "key": "[",
+    "pressed": false,
+    "timestamp": 0.0
+  },
+  {
+    "type": "keyboard",
+    "key": "w",
+    "pressed": true,
+    "timestamp": 0.11400127410888672
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 0.127000093460083
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 0.5299994945526123
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 0.6660034656524658
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": true,
+    "timestamp": 0.8900275230407715
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": false,
+    "timestamp": 0.9520225524902344
+  },
+  {
+    "type": "keyboard",
+    "key": "Key.space",
+    "pressed": false,
+    "timestamp": 1.2850210666656494
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": true,
+    "timestamp": 1.5500245094299316
+  },
+  {
+    "type": "mouse",
+    "x": 905,
+    "y": 628,
+    "button": "Button.right",
+    "pressed": true,
+    "timestamp": 1.7450213432312012
+  },
+  {
+    "type": "keyboard",
+    "key": "d",
+    "pressed": false,
+    "timestamp": 2.0060222148895264
+  },
+  {
+    "type": "mouse",
+    "x": 906,
+    "y": 628,
+    "button": "Button.right",
+    "pressed": false,
+    "timestamp": 2.8730359077453613
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": true,
+    "timestamp": 3.173110008239746
+  },
+  {
+    "type": "keyboard",
+    "key": "a",
+    "pressed": false,
+    "timestamp": 3.369159460067749
+  }
+]
