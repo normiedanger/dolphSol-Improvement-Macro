@@ -1,14 +1,15 @@
 # PAUSE COMMAND IS COMMENTED OUT CUS PAUSING ISNT IN PYTHON VERSION IDK WHY :/
 
-import discord
-from discord.ext import commands
-from discord import app_commands
+import discord # type: ignore
 import json
 import threading
-from datetime import datetime
 import pyautogui
 import requests
 import os
+
+from discord.ext import commands # type: ignore
+from discord import app_commands # type: ignore
+from datetime import datetime
 
 CONFIG_PATH = "config.json"
 with open(CONFIG_PATH, "r") as file:
@@ -32,8 +33,25 @@ def setup_bot(macro, running_event):
             print(f"Synced {len(synced)} commands with Discord.")
         except Exception as e:
             print(f"Error syncing commands: {e}")
+        if not config.get("DiscordBot_UserID"):
+            print("Warning: No User ID configured. Commands will not be executable until a valid User ID is set.")
+            webhook_url = config.get("WebhookLink")
+            if webhook_url:
+                embeds = [{
+                    "title": "WARNING",
+                    "description": f"User ID Not Specified\nPlease specify your Discord User ID to run commands.",
+                    "color": 7289397
+                }]
+            else:
+                local_embed = discord.Embed(
+                    title="WARNING",
+                    description="Webhook URL is not configured.\nPlease configure your webhook", 
+                    color=discord.Color.from_rgb(128, 128, 128)
+                )
+                await ctx.send(embed=local_embed, ephemeral=True) # type: ignore
 
     # define commands
+
     #@app_commands.command(name="pause", description="Pause/Unpause the macro")
     #async def pause(ctx: discord.Interaction):
     #    if running_event.is_set():
@@ -47,17 +65,52 @@ def setup_bot(macro, running_event):
 
     @app_commands.command(name="rejoin", description="Restart macro and reconnect")
     async def rejoin(ctx: discord.Interaction):
-        macro.stop_loop()
-        await ctx.response.send_message("Rejoining...", ephemeral=True)
-        threading.Thread(target=macro.start_loop, daemon=True).start()
+        await ctx.reponse.send_message("This command has not been developed yet. Please wait for the next release.", ephemeral="True")
+
+    #    user_id = ctx.user.id
+
+    #    if not config.get("DiscordBot_UserID"):
+    #        await ctx.response.send_message("No User ID is configured. Please set your User ID in the bot settings to use commands.", ephemeral=True)
+    #        return
+
+    #    if str(user_id) != str(config.get("DiscordBot_UserID")):
+    #        await ctx.response.send_message("You do not have permission to use this command. Ensure the correct User ID is set.", ephemeral=True)
+    #        return
+
+    #    macro.stop_loop()
+    #    await ctx.response.send_message("Rejoining...", ephemeral=True)
+    #    threading.Thread(target=macro.start_loop, daemon=True).start()
 
     @app_commands.command(name="stats", description="Schedule player stats update")
     async def stats(ctx: discord.Interaction):
-        update_config("WebhookInventoryInterval", 0)
-        await ctx.response.send_message("Player stats scheduled to be sent at the end of the current cycle.", ephemeral=True)
+        user_id = ctx.user.id
+
+        if not config.get("DiscordBot_UserID"):
+            await ctx.response.send_message("No User ID is configured. Please set your User ID in the bot settings to use commands.", ephemeral=True)
+            return
+
+        if str(user_id) != str(config.get("DiscordBot_UserID")):
+            await ctx.response.send_message("You do not have permission to use this command. Ensure the correct User ID is set.", ephemeral=True)
+            return
+
+        macro.immediate_stats_update = True
+        await ctx.response.send_message(
+            "Player stats update has been scheduled for the end of the current cycle.",
+            ephemeral=True,
+        )
 
     @app_commands.command(name="screenshot", description="Take a screenshot of the current screen")
     async def screenshot(ctx: discord.Interaction):
+        user_id = ctx.user.id
+
+        if not config.get("DiscordBot_UserID"):
+            await ctx.response.send_message("No User ID is configured. Please set your User ID in the bot settings to use commands.", ephemeral=True)
+            return
+
+        if str(user_id) != str(config.get("DiscordBot_UserID")):
+            await ctx.response.send_message("You do not have permission to use this command. Ensure the correct User ID is set.", ephemeral=True)
+            return
+        
         await ctx.response.defer(ephemeral=True)
 
         try:
@@ -118,15 +171,43 @@ def setup_bot(macro, running_event):
 
     @app_commands.command(name="stop", description="Stop the macro")
     async def stop(ctx: discord.Interaction):
+        user_id = ctx.user.id
+
+        if not config.get("DiscordBot_UserID"):
+            await ctx.response.send_message("No User ID is configured. Please set your User ID in the bot settings to use commands.", ephemeral=True)
+            return
+
+        if str(user_id) != str(config.get("DiscordBot_UserID")):
+            await ctx.response.send_message("You do not have permission to use this command. Ensure the correct User ID is set.", ephemeral=True)
+            return
+        
         macro.stop_loop()
         running_event.clear()
-        await ctx.response.send_message("Macro stopped.", ephemeral=True)
+        local_embed = discord.Embed(
+            description="Macro stopped.", 
+            color=discord.Color.from_rgb(128, 128, 128)
+        )
+        await ctx.followup.send(embed=local_embed, ephemeral=True)
 
     @app_commands.command(name="start", description="Start the macro")
     async def start(ctx: discord.Interaction):
+        user_id = ctx.user.id
+
+        if not config.get("DiscordBot_UserID"):
+            await ctx.response.send_message("No User ID is configured. Please set your User ID in the bot settings to use commands.", ephemeral=True)
+            return
+
+        if str(user_id) != str(config.get("DiscordBot_UserID")):
+            await ctx.response.send_message("You do not have permission to use this command. Ensure the correct User ID is set.", ephemeral=True)
+            return
+        
         running_event.set()
         threading.Thread(target=macro.start_loop, daemon=True).start()
-        await ctx.response.send_message("Macro started.", ephemeral=True)
+        local_embed = discord.Embed(
+            description="Macro started.", 
+            color=discord.Color.from_rgb(128, 128, 128)
+        )
+        await ctx.followup.send(embed=local_embed, ephemeral=True)
 
     # add commands to tree
     #bot.tree.add_command(pause)
