@@ -9,6 +9,9 @@
   - After downloading, extract the ZIP file to your desired directory
   - You can now run dolphSol through the Main.ahk file in the folder
 
+## Running the Macro
+  - You can run the PYTHON macro by opening "macro.bat".
+  - You can run the AUTOHOTKEY macro by opening "Main.ahk".
 
 ## Features
 Noteab's Macro has a couple of different features it is capable of. These include:
