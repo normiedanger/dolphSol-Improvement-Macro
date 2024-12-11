@@ -145,7 +145,7 @@
     "WebhookInventoryInterval": 60,
     "WebhookUserID": "",
     "WebhookGlitchPingID": "",
-    "DiscordBotToken": "",
+    "DiscordBot_Token": "",
     "DiscordBot_Enabled": 0,
     "DiscordBot_UserID": "",
     "Biome_Notifer_Windy": "Message",

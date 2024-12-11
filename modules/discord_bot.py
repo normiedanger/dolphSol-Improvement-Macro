@@ -220,4 +220,4 @@ def setup_bot(macro, running_event):
 # start the bot
 def start_bot(macro, running_event):
     setup_bot(macro, running_event)
-    bot.run(config["DiscordBotToken"])
+    bot.run(config["DiscordBot_Token"])

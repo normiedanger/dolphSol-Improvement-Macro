@@ -1225,14 +1225,14 @@ class DiscordMacroUI:
         self.discordbot_token_label.grid(column=0, row=2, sticky="w", padx=5, pady=2)
         self.discordbot_token_entry = ttk.Entry(discordbot_frame, width=25)
         self.discordbot_token_entry.grid(column=1, row=2, sticky="w", padx=5, pady=2)
-        self.discordbot_token_entry.insert(0, self.config.get("DiscordBotToken", ""))
+        self.discordbot_token_entry.insert(0, self.config.get("DiscordBot_Token", ""))
 
         # Command Info Button
         discordbot_cmd_info = ttk.Button(discordbot_frame, text="Command Info", command=self.discordbot_cmd_info_popup)
         discordbot_cmd_info.grid(column=2, row=0, padx=5, pady=2)
 
         # Update inputs directly on focus out
-        self.discordbot_token_entry.bind("<FocusOut>", lambda e: self.update_config("DiscordBotToken", self.discordbot_token_entry.get()))
+        self.discordbot_token_entry.bind("<FocusOut>", lambda e: self.update_config("DiscordBot_Token", self.discordbot_token_entry.get()))
         self.discordbot_userid_entry.bind("<FocusOut>", lambda e: self.update_config("DiscordBot_UserID", self.discordbot_userid_entry.get()))
 
     def discordbot_cmd_info_popup(self):
