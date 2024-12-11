@@ -9,3 +9,16 @@ Pillow
 requests
 ahk
 pystray
+discord.py
+pynput
+opencv-python
+pyautogui
+pytesseract
+numpy
+pygetwindow
+pypiwin32
+Pillow
+requests
+ahk
+pystray
+discord.py

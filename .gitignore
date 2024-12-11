@@ -1,0 +1,7 @@
+modules/__pycache__/**
+LICENSE
+configbackup.json
+images/current_screen.png
+images/macro_inv_ss.png
+images/biomefound.png
+.git/*

@@ -986,6 +986,10 @@ class MacroLoop:
                 
                 self.last_quest_claim = current_time
 
+
+    def schedule_one_time_stats_update(self):
+        self.one_time_stats_update = True
+    
         
     def macro_periodical_screenshot(self):
         try:
@@ -1001,7 +1005,7 @@ class MacroLoop:
             if not hasattr(self, 'last_inventory_webhook_time'):
                 self.last_inventory_webhook_time = current_time - webhook_interval
 
-            if current_time - self.last_inventory_webhook_time >= webhook_interval:
+            if self.one_time_stats_update or (current_time - self.last_inventory_webhook_time >= webhook_interval):
                 try:
                     self.send_webhook_status(
                         status="Inventory Status",
@@ -1009,13 +1013,12 @@ class MacroLoop:
                         inv_screenshots=True
                     )
                     self.last_inventory_webhook_time = current_time
+                    self.one_time_stats_update = False
                 except Exception as e:
                     print(f"Failed to send inventory status: {e}")
 
         except FileNotFoundError:
             print("Error: config.json file not found.")
-        except Exception as e:
-            print(f"An unexpected error occurred in 'macro_periodical_screenshot': {e}")
 
 
             

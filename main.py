@@ -2,23 +2,28 @@ import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 import re, os, sys, json, threading, time, pyautogui, webbrowser, requests
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import threading
 
 from pynput import mouse, keyboard
 from PIL import ImageGrab, Image, ImageDraw, ImageTk
 from modules.main_loop import MacroLoop 
 from modules.record_path import RecordPath
 from modules.snipping import SnippingWidget
+from modules.main_loop import MacroLoop
+from modules.discord_bot import start_bot
         
 class DiscordMacroUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Improvement Sol's v1.5.0 (EON1)")
+        self.root.title("Improvement Sol's v1.5.1 (EON1)")
         self.root.configure(bg="#2C2F33")
         self.dark_mode = True
         
         self.macro_loop = MacroLoop()
         self.macro_loop_listener = threading.Thread(target=self.start_key_listener, daemon=True)
         self.macro_loop_listener.start()
+        self.running_event = threading.Event()
+        self.running_event.set()
         
         # theme
         theme_path = os.path.join("modules/Azure-ttk-theme-2.1.0", "azure.tcl")
@@ -38,11 +43,16 @@ class DiscordMacroUI:
         self.config_path = "config.json"
         self.config = self.load_config()
 
+        # initialize/start the discord bot
+        if self.config.get("DiscordBot_Enabled", 0):
+            threading.Thread(target=start_bot, args=(self.macro_loop, self.running_event), daemon=True).start()
+
         # UI
         self.setup_tabs()
         self.setup_main_tab()
         self.setup_crafting_tab()
         self.setup_webhook_tab()
+        self.setup_discordbot_tab()
         self.setup_settings_tab()
         self.setup_credits_tab()
         self.setup_merchant_tab()
@@ -232,7 +242,14 @@ class DiscordMacroUI:
         self.update_config("Webhook_Enabled", self.enable_webhook.get())
 
     
-     ## ~ WEBHOOK ## 
+     ## ~ DISCORD BOT ## 
+
+    def toggle_discordbot_enabled(self):
+        if self.enable_discordbot.get() == 1 and not self.discordbot_token_entry.get():
+            messagebox.showwarning("Discord Bot Disabled", "Please enter a valid Discord Bot Token before enabling.")
+            self.enable_discordbot.set(0)
+            return
+        self.update_config("DiscordBot_Enabled", self.enable_discordbot.get())
      
     ##* Check PS link format *##
     def validate_and_save_ps_link(self, event=None):
@@ -943,6 +960,7 @@ class DiscordMacroUI:
         self.main_tab = ttk.Frame(self.tab_control)
         self.crafting_tab = ttk.Frame(self.tab_control)
         self.webhook_tab = ttk.Frame(self.tab_control)
+        self.discordbot_tab = ttk.Frame(self.tab_control)
         self.settings_tab = ttk.Frame(self.tab_control)
         self.credits_tab = ttk.Frame(self.tab_control)
         self.extras_tab = ttk.Frame(self.tab_control)
@@ -952,6 +970,7 @@ class DiscordMacroUI:
         self.tab_control.add(self.main_tab, text="Main")
         self.tab_control.add(self.crafting_tab, text="Crafting")
         self.tab_control.add(self.webhook_tab, text="Webhook")
+        self.tab_control.add(self.discordbot_tab, text="Discord Bot")
         self.tab_control.add(self.settings_tab, text="Settings")
         self.tab_control.add(self.credits_tab, text="Credits")
         self.tab_control.add(self.extras_tab, text="Extras")
@@ -1180,6 +1199,59 @@ class DiscordMacroUI:
                                                     command=lambda: self.update_config("WebhookAuraImages", self.aura_images.get()))
         self.aura_images_checkbox.grid(column=0, row=2, columnspan=2, sticky="w", pady=2)
 
+    def setup_discordbot_tab(self):
+        main_frame = ttk.Frame(self.discordbot_tab)
+        main_frame.pack(expand=1, fill="both", padx=10, pady=10)
+
+        # Discord Bot Frame
+        discordbot_frame = ttk.LabelFrame(main_frame, text="Discord Bot")
+        discordbot_frame.grid(column=0, row=0, padx=(5, 10), pady=5, sticky="nw")
+
+        # Enable Discord Bot Checkbox
+        self.enable_discordbot = tk.IntVar(value=self.config.get("DiscordBot_Enabled", 0))
+        self.enable_discordbot_checkbox = ttk.Checkbutton(discordbot_frame, text="Enable Discord Bot", variable=self.enable_discordbot,
+                                                    command=self.toggle_discordbot_enabled)
+        self.enable_discordbot_checkbox.grid(column=0, row=0, columnspan=2, sticky="w")
+
+        # Discord User ID
+        self.discordbot_userid_label = ttk.Label(discordbot_frame, text="Your Discord ID:")
+        self.discordbot_userid_label.grid(column=0, row=1, sticky="w", padx=5, pady=2)
+        self.discordbot_userid_entry = ttk.Entry(discordbot_frame, width=25)
+        self.discordbot_userid_entry.grid(column=1, row=1, sticky="w", padx=5, pady=2)
+        self.discordbot_userid_entry.insert(0, self.config.get("DiscordBot_UserID", ""))
+
+        # Discord Token Entry (without validation)
+        self.discordbot_token_label = ttk.Label(discordbot_frame, text="Discord Bot Token:")
+        self.discordbot_token_label.grid(column=0, row=2, sticky="w", padx=5, pady=2)
+        self.discordbot_token_entry = ttk.Entry(discordbot_frame, width=25)
+        self.discordbot_token_entry.grid(column=1, row=2, sticky="w", padx=5, pady=2)
+        self.discordbot_token_entry.insert(0, self.config.get("DiscordBot_Token", ""))
+
+        # Command Info Button
+        discordbot_cmd_info = ttk.Button(discordbot_frame, text="Command Info", command=self.discordbot_cmd_info_popup)
+        discordbot_cmd_info.grid(column=2, row=0, padx=5, pady=2)
+
+        # Update inputs directly on focus out
+        self.discordbot_token_entry.bind("<FocusOut>", lambda e: self.update_config("DiscordBot_Token", self.discordbot_token_entry.get()))
+        self.discordbot_userid_entry.bind("<FocusOut>", lambda e: self.update_config("DiscordBot_UserID", self.discordbot_userid_entry.get()))
+
+    def discordbot_cmd_info_popup(self):
+        discordbot_info = tk.Toplevel(self.root)
+        discordbot_info.title("Discord Bot Commands")
+        discordbot_info.geometry("630x300")
+
+        discordbot_commands = """
+        /start - Starts the macro
+        /stop - Stops the macro
+        /pause - Toggles pause for the macro
+        /rejoin - Rejoin your private server
+        /stats - Gives your storage and inventory once the next interaction phase finishes
+        /screenshot - Sends a screenshot of whatever is on the screen
+        """
+        tk.Label(discordbot_info, text="Discord Bot Commands", font=("Helvetica", 14, "bold")).pack(pady=10)
+        tk.Label(discordbot_info, text=discordbot_commands, justify="left", anchor="w").pack(padx=10, pady=10, fill="both", expand=True)
+        ttk.Button(discordbot_info, text="Close", command=discordbot_info.destroy).pack(pady=10)
+
     def setup_settings_tab(self):
         main_frame = ttk.Frame(self.settings_tab)
         main_frame.pack(expand=1, fill="both", padx=10, pady=10)
@@ -1280,7 +1352,18 @@ class DiscordMacroUI:
     def show_extras_credit(self):
         extras_window = tk.Toplevel(self.root)
         extras_window.title("Extras Credit")
-        extras_window.geometry("300x450")
+        extras_window.geometry("450x450")
+
+        contributors_frame = ttk.LabelFrame(extras_window, text="Contributors (Development)")
+        contributors_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        contributors = [
+            "vexthecoder -",
+            "Created the Discord Bot code and functionality."
+        ]
+
+        for contributor in contributors:
+            ttk.Label(contributors_frame, text=contributor).pack(pady=2)
         
         testers_frame = ttk.LabelFrame(extras_window, text="Macro Testers (Discord)")
         testers_frame.pack(fill="both", expand=True, padx=10, pady=10)

@@ -29,7 +29,7 @@
     ],
     "collection_back_button_coords": [
         386,
-        129
+        140
     ],
     "inv_menu_coords": [
         41,
@@ -129,22 +129,25 @@
         0,
         0
     ],
-    "CollectItems": 0,
+    "CollectItems": 1,
     "DoObby": 0,
     "AutoChalice": 0,
     "AutoClaimDailyQuests": false,
     "AZERTY_Keyboard": false,
     "item_scheduler": [],
     "Enabled_AutoEquip": 0,
-    "AutomaticPotionCrafting": true,
-    "Equipped_Aura": "Common",
+    "AutomaticPotionCrafting": false,
+    "Equipped_Aura": "",
     "Special_Aura": 0,
     "WebhookLink": "",
-    "Webhook_Enabled": 1,
+    "Webhook_Enabled": 0,
     "WebhookInventory": false,
-    "WebhookInventoryInterval": 10,
+    "WebhookInventoryInterval": 60,
     "WebhookUserID": "",
     "WebhookGlitchPingID": "",
+    "DiscordBot_Token": "",
+    "DiscordBot_Enabled": 0,
+    "DiscordBot_UserID": "",
     "Biome_Notifer_Windy": "Message",
     "Biome_Notifer_Rainy": "Message",
     "Biome_Notifer_Sandstorm": "Message",
@@ -153,9 +156,9 @@
     "Biome_Notifer_Corruption": "Message",
     "Biome_Notifer_Null": "Message",
     "Biome_Notifer_Glitched": "Message",
-    "WebhookAuraImages": 0,
-    "WebhookRollSendMinimum": 10000,
-    "WebhookRollPingMinimum": 100000,
+    "WebhookAuraImages": 1,
+    "WebhookRollSendMinimum": 0,
+    "WebhookRollPingMinimum": 0,
     "Biome_Notifer_Snowy": "Message",
     "Biome_Region": [
         4,
@@ -163,8 +166,8 @@
         260,
         32
     ],
-    "EnableAutoMerchant": 1,
-    "ItemExchangeJester": 1,
+    "EnableAutoMerchant": 0,
+    "ItemExchangeJester": 0,
     "purchase_amount_button": [
         687,
         587
@@ -202,5 +205,6 @@
     ],
     "CraftingSlot1": "None",
     "CraftingSlot2": "None",
-    "CraftInterval": 10
+    "CraftInterval": 60,
+    "PrivateServerLink": ""
 }
