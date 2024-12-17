@@ -277,3 +277,33 @@ CreateMainUI() {
     Gui mainUI:Default
 }
 CreateMainUI()
+
+
+
+global JesterItemsArray := ["Oblivion Potion"
+    ,"Heavenly Potion (buy both I and II)"
+    ,"Rune of Everything"
+    ,"Rune of Nothing"
+    ,"Rune Of Corruption"
+    ,"Rune Of Hell"
+    ,"Rune of Galaxy"
+    ,"Rune of Rainstorm"
+    ,"Rune of Frost"
+    ,"Rune of Wind"
+    ,"Strange Potion (buy both I and II)"
+    ,"Stella's Candle"
+    ,"Merchant Tracker"
+    ,"Random Potion Sack"]
+
+global MariItemsArray := ["Void Coin"
+    ,"Lucky Penny"
+    ,"Fortune Spoid (buy both I and II and III)"
+    ,"Mixed Potion"
+    ,"Lucky Potion"
+    ,"Lucky Potion L"
+    ,"Lucky Potion XL"
+    ,"Speed Potion"
+    ,"Speed Potion L"
+    ,"Speed Potion XL"
+    ,"Gear A"
+    ,"Gear B"]

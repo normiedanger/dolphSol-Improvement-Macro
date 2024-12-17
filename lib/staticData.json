@@ -5,7 +5,7 @@
         "versionLink":"https://github.com/Amraki/dolphSol-Macro",
         "updateNotes":"Something new!"
     },
-    "biomes": ["Windy", "Rainy", "Snowy", "Storm", "Hell", "Starfall", "Corruption", "Null", "Glitched"],
+    "biomes": ["Normal","Windy", "Rainy", "Snowy", "Storm", "Hell", "Starfall", "Corruption", "Null", "Glitched"],
     "scheduleItems": ["Strange Controller", "Biome Randomizer", "Lucky Potion", "Speed Potion", "Fortune Potion I", "Fortune Potion II", "Fortune Potion III", "Haste Potion I", "Haste Potion II", "Haste Potion III", "Heavenly Potion I", "Heavenly Potion II", "Merchant Teleport", "Oblivion Potion"],
     "stars": {
         "495104": {

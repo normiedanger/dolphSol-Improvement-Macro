@@ -33,6 +33,8 @@ global options_Ref = getINIData_Ref("..\settings\config.ini")
 
 global regWalkFactor_Ref := 1.25 ; since i made the paths all with vip, normalize
 
+
+
 getWalkTime_Ref(d){
     baseTime := d * (1 + (regWalkFactor_Ref - 1) * (1 - options_Ref.VIP))
     
@@ -86,7 +88,7 @@ collect_Ref(num){
     if (!options_Ref["ItemSpot" . num]){
         return
     }
-    Loop, 5
+    Loop, 8
     {
         Send {f}
         Sleep, 100

@@ -16,6 +16,7 @@ CoordMode, Mouse, Screen
 #Include, GDIP_All.ahk
 #Include, ocr.ahk
 #Include, jxon.ahk
+#Include, tesseract_ocr.ahk
 
 Gdip_Startup()
 
@@ -25,6 +26,7 @@ global lastLoggedMessage := ""
 
 global configPath := mainDir . "settings\config.ini"
 global ssPath := "ss.jpg"
+global biome_ssPath := "biome_ss.jpg"
 global imageDir := mainDir . "images\"
 
 logMessage("") ; empty line for separation
@@ -61,6 +63,65 @@ global biomeData := {"Normal":{color: 0xdddddd}
 
 global options := {}
 global auraNames := []
+
+global guis := Object(), timers := Object()
+
+Highlight(x="", y="", w="", h="", showTime=2000, color="Red", d=2) {
+    ; If no coordinates are provided, clear all highlights
+    if (x = "" || y = "" || w = "" || h = "") {
+        for key, timer in timers {
+            SetTimer, % timer, Off
+            Gui, %key%Top:Destroy
+            Gui, %key%Left:Destroy
+            Gui, %key%Bottom:Destroy
+            Gui, %key%Right:Destroy
+            guis.Delete(key)
+        }
+        timers := Object()
+        return
+    }
+
+    x := Floor(x)
+    y := Floor(y)
+    w := Floor(w)
+    h := Floor(h)
+
+    ; Create a new highlight
+    key := "Highlight" x y w h
+    Gui, %key%Top:New, +AlwaysOnTop -Caption +ToolWindow
+    Gui, %key%Top:Color, %color%
+    Gui, %key%Top:Show, x%x% y%y% w%w% h%d%
+
+    Gui, %key%Left:New, +AlwaysOnTop -Caption +ToolWindow
+    Gui, %key%Left:Color, %color%
+    Gui, %key%Left:Show, x%x% y%y% h%h% w%d%
+
+    Gui, %key%Bottom:New, +AlwaysOnTop -Caption +ToolWindow
+    Gui, %key%Bottom:Color, %color%
+    Gui, %key%Bottom:Show, % "x"x "y"(y+h-d) "w"w "h"d
+
+    Gui, %key%Right:New, +AlwaysOnTop -Caption +ToolWindow
+    Gui, %key%Right:Color, %color%
+    Gui, %key%Right:Show, % "x"(x+w-d) "y"y "w"d "h"h
+
+    ; Store the gui and set a timer to remove it
+    guis[key] := true
+    if (showTime > 0) {
+        timerKey := Func("RemoveHighlight").Bind(key)
+        timers[key] := timerKey
+        SetTimer, % timerKey, -%showTime%
+    }
+}
+
+RemoveHighlight(key) {
+    global guis, timers
+    Gui, %key%Top:Destroy
+    Gui, %key%Left:Destroy
+    Gui, %key%Bottom:Destroy
+    Gui, %key%Right:Destroy
+    guis.Delete(key)
+    timers.Delete(key)
+}
 
 FileRead, retrieved, %configPath%
 
@@ -288,6 +349,12 @@ loadWebhookSettings(){
         MsgBox, Unable to retrieve config data, your settings have been set to their defaults.
         savedRetrieve := {}
     }
+
+    ; Load Biome OCR values
+    options["Biome_OCR_X"] := savedRetrieve.HasKey("Biome_OCR_X") ? savedRetrieve["Biome_OCR_X"] : 4
+    options["Biome_OCR_Y"] := savedRetrieve.HasKey("Biome_OCR_Y") ? savedRetrieve["Biome_OCR_Y"] : 903
+    options["Biome_OCR_W"] := savedRetrieve.HasKey("Biome_OCR_W") ? savedRetrieve["Biome_OCR_W"] : 228
+    options["Biome_OCR_H"] := savedRetrieve.HasKey("Biome_OCR_H") ? savedRetrieve["Biome_OCR_H"] : 31
 
     ; Load aura names from JSON
     auraNames := []
@@ -633,13 +700,16 @@ Merchant_Webhook_Send(url, objParam) {
 
 global similarCharacters := {"1":"l"
     ,"n":"m"
+    ,"o":"d"
+    ,"O":"D"
     ,"m":"n"
     ,"t":"f"
     ,"f":"t"
     ,"s":"S"
     ,"S":"s"
     ,"w":"W"
-    ,"W":"w"}
+    ,"W":"w"
+    ,"V":"Y"}
 
     identifyBiome(inputStr){
         if (!inputStr)
@@ -696,50 +766,52 @@ global similarCharacters := {"1":"l"
 
 determineBiome(){
     ; logMessage("[determineBiome] Determining biome...")
-    if (!WinActive("ahk_id " GetRobloxHWND()) && !WinActive("Roblox")){
-        logMessage("[determineBiome] Roblox window not active.")
-        Sleep, 5000
-        return
-    }
+    ; if (!WinActive("ahk_id " GetRobloxHWND()) && !WinActive("Roblox")){
+    ;     logMessage("[determineBiome] Roblox window not active.")
+    ;     Sleep, 5000
+    ;     return
+    ; }
     getRobloxPos(rX,rY,width,height)
-    x := rX
-    y := rY + height - height*0.180 + ((height/600) - 1)*10 ; Original: rY + height - height*0.102 + ((height/600) - 1)*10
-    w := width*0.15
-    h := height*0.03
-    pBM := Gdip_BitmapFromScreen(x "|" y "|" w "|" h)
-
-    effect := Gdip_CreateEffect(3,"2|0|0|0|0" . "|" . "0|1.5|0|0|0" . "|" . "0|0|1|0|0" . "|" . "0|0|0|1|0" . "|" . "0|0|0.2|0|1",0)
-    effect2 := Gdip_CreateEffect(5, -80,250)
-    effect3 := Gdip_CreateEffect(2,5,30)
-    Gdip_BitmapApplyEffect(pBM,effect)
-    Gdip_BitmapApplyEffect(pBM,effect2)
-    Gdip_BitmapApplyEffect(pBM,effect3)
+    
+    x := options["Biome_OCR_X"]
+    y := options["Biome_OCR_Y"]
+    w := options["Biome_OCR_W"]
+    h := options["Biome_OCR_H"]
 
     identifiedBiome := 0
     Loop 20 {
         st := A_TickCount
-        newSizedPBM := Gdip_ResizeBitmap(pBM,300+(A_Index*38),70+(A_Index*7.5),1,2)
 
-        ocrResult := ocrFromBitmap(newSizedPBM)
+        ocrResult := CaptureScreen(x,y,w,h)
+        ;logMessage("[determineBiome] Biome OCR result: " ocrResult)
         identifiedBiome := identifyBiome(ocrResult)
-
-        Gdip_DisposeBitmap(newSizedPBM)
+        
 
         if (identifiedBiome){
             break
         }
     }
+
     if (identifiedBiome && identifiedBiome != "Normal") {
         ; logMessage("[determineBiome] OCR result: " RegExReplace(ocrResult,"(\n|\r)+",""))
         ; logMessage("[determineBiome] Identified biome: " identifiedBiome)
+        pBM := Gdip_BitmapFromScreen(x "|" y "|" w "|" h)
+        effect := Gdip_CreateEffect(3,"2|0|0|0|0" . "|" . "0|1.5|0|0|0" . "|" . "0|0|1|0|0" . "|" . "0|0|0|1|0" . "|" . "0|0|0.2|0|1",0)
+        effect2 := Gdip_CreateEffect(5, -80,250)
+        effect3 := Gdip_CreateEffect(2,5,30)
+        Gdip_BitmapApplyEffect(pBM,effect)
+        Gdip_BitmapApplyEffect(pBM,effect2)
+        Gdip_BitmapApplyEffect(pBM,effect3)
         Gdip_SaveBitmapToFile(pBM,ssPath)
+
+        Gdip_DisposeEffect(effect)
+        Gdip_DisposeEffect(effect2)
+        Gdip_DisposeEffect(effect3)
+        Gdip_DisposeBitmap(retrievedMap)
+        Gdip_DisposeBitmap(pBM)
     }
 
-    Gdip_DisposeEffect(effect)
-    Gdip_DisposeEffect(effect2)
-    Gdip_DisposeEffect(effect3)
-    Gdip_DisposeBitmap(retrievedMap)
-    Gdip_DisposeBitmap(pBM)
+    
 
     DllCall("psapi.dll\EmptyWorkingSet", "ptr", -1)
 
@@ -842,9 +914,8 @@ handleRollPost(bypass,auraInfo,starMap,originalCorners) {
         if (options["wh" . sAuraName]) {
             webhookPost({auraName: auraInfo.name, embedContent: "# You rolled " auraInfo.name "!\n> ### 1/" commaFormat(auraInfo.rarity) " Chance",embedTitle: "Roll",embedColor: auraInfo.color,embedImage: auraImages ? auraInfo.image : 0,embedFooter: "Detected color " . bypass . (!isColorBlack(originalCorners[4]) ? " | Corner color: " . originalCorners[4] : "") ,pings: (pingMinimum && pingMinimum <= auraInfo.rarity),files:[ssPath],embedThumbnail:"attachment://ss.jpg"})
         }
-    } else if (!auraInfo) {
-        webhookPost({embedContent: "Unknown roll color: " bypass,embedTitle: "Roll?",embedColor: bypass,files:[ssPath],embedThumbnail:"attachment://ss.jpg"})
     }
+    
     Gdip_DisposeBitmap(starMap)
 }
 

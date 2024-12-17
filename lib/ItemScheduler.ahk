@@ -224,7 +224,7 @@ LoadItemSchedulerOptions() {
     global configPath, ItemSchedulerEntries, ScheduleItems
 
     ; Load items available for use
-    ScheduleItems := sData.scheduleItems
+    scheduleItems := ["Strange Controller", "Biome Randomizer", "Lucky Potion", "Speed Potion", "Fortune Potion I", "Fortune Potion II", "Fortune Potion III", "Haste Potion I", "Haste Potion II", "Haste Potion III", "Heavenly Potion I", "Heavenly Potion II", "Merchant Teleport", "Oblivion Potion", "Warp Potion", "Transcendent Potion"]
 
     savedRetrieve := getINIData(configPath)
     if (!savedRetrieve) {
